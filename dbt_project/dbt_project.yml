@@ -1,0 +1,31 @@
+name: 'nyt_subscription_analytics'
+version: '1.0.0'
+config-version: 2
+
+profile: 'nyt_dev'
+
+model-paths: ["models"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+vars:
+  lookback_days: 90
+  churn_window_days: 30
+
+models:
+  nyt_subscription_analytics:
+    staging:
+      +materialized: view
+      +schema: staging
+      +tags: ["staging", "daily"]
+    marts:
+      +materialized: table
+      +schema: analytics
+      +tags: ["marts", "daily"]
+    metrics:
+      +materialized: table
+      +schema: metrics
+      +tags: ["metrics", "daily"]

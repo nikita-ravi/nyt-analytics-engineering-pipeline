@@ -1,0 +1,101 @@
+version: 2
+
+sources:
+  - name: raw
+    description: >
+      Raw landing zone (mirrors GCS bucket structure ingested via Airflow).
+      Data lands here from product event streams, CRM exports, and third-party
+      data providers before any transformation.
+    database: nyt_raw
+    schema: raw_events
+
+    tables:
+      - name: subscribers
+        description: "Master subscriber record from CRM. Known issue: duplicate rows on plan upgrades."
+        columns:
+          - name: subscriber_id
+            tests: [not_null]   # dedup in staging handles uniqueness
+          - name: plan_type
+            tests:
+              - not_null
+              - accepted_values:
+                  values: ["bundle_all","bundle_3","news_only","games_only","cooking_only","athletic_only","wirecutter_only"]
+          - name: subscription_start_date
+            tests: [not_null]
+          - name: is_churned
+            tests: [not_null]
+
+      - name: events_news
+        description: "News article engagement events from web and mobile SDKs."
+        columns:
+          - name: event_id
+            tests: [not_null, unique]
+          - name: event_type
+            tests:
+              - accepted_values:
+                  values: ["article_view","article_complete","share","save","comment"]
+          - name: event_timestamp
+            tests: [not_null]
+
+      - name: events_games
+        description: "Games interaction events (Wordle, Crossword, Spelling Bee, Connections, Strands)."
+        columns:
+          - name: event_id
+            tests: [not_null, unique]
+          - name: game_name
+            tests:
+              - accepted_values:
+                  values: ["wordle","crossword","spelling_bee","connections","strands"]
+
+      - name: events_cooking
+        description: "Cooking product engagement events."
+        columns:
+          - name: event_id
+            tests: [not_null, unique]
+
+      - name: events_athletic
+        description: "The Athletic article and media engagement events."
+        columns:
+          - name: event_id
+            tests: [not_null, unique]
+
+models:
+  - name: stg_subscribers
+    description: >
+      Cleaned, deduplicated subscriber dimension. Deduplication uses ROW_NUMBER()
+      over subscriber_id ordered by created_at to remove CRM double-writes.
+      Adds product access flags and bundle tier classification.
+    columns:
+      - name: subscriber_id
+        description: "Primary key — unique per subscriber post-dedup"
+        tests: [not_null, unique]
+      - name: plan_type
+        tests: [not_null]
+      - name: bundle_tier
+        tests:
+          - accepted_values:
+              values: ["full_bundle","partial_bundle","single_product"]
+      - name: tenure_days
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 3650
+
+  - name: stg_events_news
+    description: >
+      Cleaned news engagement events. Orphaned events (null subscriber_id)
+      are filtered. Future timestamps are clamped to CURRENT_TIMESTAMP()
+      and flagged for DQ monitoring.
+    columns:
+      - name: event_id
+        tests: [not_null, unique]
+      - name: event_date
+        tests: [not_null]
+      - name: subscriber_id
+        tests: [not_null]
+      - name: time_on_page_sec
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 1800

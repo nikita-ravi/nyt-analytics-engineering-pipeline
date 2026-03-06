@@ -1,0 +1,89 @@
+{
+  "registry_version": "2024.Q1.3",
+  "run_at": "2026-03-06T14:36:10.408821",
+  "drift_injected": true,
+  "summary": {
+    "total_datasets": 5,
+    "clean": 1,
+    "info": 0,
+    "warning": 1,
+    "breaking": 3,
+    "total_events": 5
+  },
+  "datasets": [
+    {
+      "dataset": "events_games",
+      "status": "BREAKING",
+      "events": [
+        {
+          "dataset": "events_games",
+          "column": "game_name",
+          "drift_type": "MISSING_COLUMN",
+          "severity": "BREAKING",
+          "expected": "object",
+          "actual": null,
+          "detail": "Column 'game_name' disappeared. Was it renamed by engineering? Check mobile SDK changelog."
+        },
+        {
+          "dataset": "events_games",
+          "column": "game_title",
+          "drift_type": "NEW_COLUMN",
+          "severity": "WARNING",
+          "expected": null,
+          "actual": "object",
+          "detail": "New column 'game_title' detected. Review and add to schema registry if valid."
+        }
+      ]
+    },
+    {
+      "dataset": "events_athletic",
+      "status": "BREAKING",
+      "events": [
+        {
+          "dataset": "events_athletic",
+          "column": "time_on_page_sec",
+          "drift_type": "TYPE_CHANGE",
+          "severity": "BREAKING",
+          "expected": "float64",
+          "actual": "int64",
+          "detail": "Type narrowing: 'float64' \u2192 'int64'. Downstream CAST()s will fail or silently truncate."
+        }
+      ]
+    },
+    {
+      "dataset": "events_news",
+      "status": "WARNING",
+      "events": [
+        {
+          "dataset": "events_news",
+          "column": "scroll_depth_pct",
+          "drift_type": "NEW_COLUMN",
+          "severity": "WARNING",
+          "expected": null,
+          "actual": "float64",
+          "detail": "New column 'scroll_depth_pct' detected. Review and add to schema registry if valid."
+        }
+      ]
+    },
+    {
+      "dataset": "subscribers",
+      "status": "BREAKING",
+      "events": [
+        {
+          "dataset": "subscribers",
+          "column": "plan_type",
+          "drift_type": "ENUM_VIOLATION",
+          "severity": "BREAKING",
+          "expected": null,
+          "actual": null,
+          "detail": "Unknown plan_type values: {'audio_only'}. New plan launched without Data Platform notification?"
+        }
+      ]
+    },
+    {
+      "dataset": "events_cooking",
+      "status": "CLEAN",
+      "events": []
+    }
+  ]
+}

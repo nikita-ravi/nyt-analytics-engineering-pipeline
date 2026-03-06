@@ -1,0 +1,18 @@
+{
+  "generated_at": "2026-03-06T12:31:47.844291",
+  "n_users": 5000,
+  "n_days": 90,
+  "start_date": "2025-12-06",
+  "record_counts": {
+    "subscribers": 5000,
+    "news_events": 14231,
+    "games_events": 111129,
+    "cooking_events": 49863,
+    "athletic_events": 63527
+  },
+  "dq_anomalies": {
+    "duplicate_subscribers": 50,
+    "orphaned_news_events": 284,
+    "future_timestamp_games": 30
+  }
+}

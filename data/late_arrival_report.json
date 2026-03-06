@@ -1,0 +1,3113 @@
+{
+  "generated_at": "2026-03-06T14:36:11.051629",
+  "late_threshold": {
+    "events_news": 2,
+    "events_games": 4,
+    "events_cooking": 4,
+    "events_athletic": 3
+  },
+  "reprocess_threshold_pct": 5.0,
+  "summary": {
+    "total_events": 238750,
+    "total_late": 36701,
+    "overall_late_pct": 15.37,
+    "domains_with_reprocessing": 4,
+    "total_reprocess_jobs": 364
+  },
+  "domains": [
+    {
+      "domain": "events_games",
+      "threshold_hours": 4,
+      "total_events": 111129,
+      "late_events": 14417,
+      "late_pct": 12.97,
+      "avg_lag_hours": 1.693,
+      "p50_lag_hours": 0.628,
+      "p95_lag_hours": 6.903,
+      "max_lag_hours": 34.146,
+      "lag_bucket_dist": {
+        "<30min": 52229,
+        "30min-2h": 28157,
+        "2-6h": 23373,
+        "6-12h": 6072,
+        ">12h": 1298
+      },
+      "platform_breakdown": [
+        {
+          "platform": "android",
+          "total_events": 37234,
+          "late_events": 11834,
+          "avg_lag_hours": 3.5,
+          "p95_lag_hours": 10.57
+        },
+        {
+          "platform": "ios",
+          "total_events": 37165,
+          "late_events": 2583,
+          "avg_lag_hours": 1.5,
+          "p95_lag_hours": 4.5
+        },
+        {
+          "platform": "web",
+          "total_events": 36730,
+          "late_events": 0,
+          "avg_lag_hours": 0.05,
+          "p95_lag_hours": 0.15
+        }
+      ],
+      "reprocess_dates": [
+        "2025-12-06",
+        "2025-12-07",
+        "2025-12-08",
+        "2025-12-09",
+        "2025-12-10",
+        "2025-12-11",
+        "2025-12-12",
+        "2025-12-13",
+        "2025-12-14",
+        "2025-12-15",
+        "2025-12-16",
+        "2025-12-17",
+        "2025-12-18",
+        "2025-12-19",
+        "2025-12-20",
+        "2025-12-21",
+        "2025-12-22",
+        "2025-12-23",
+        "2025-12-24",
+        "2025-12-25",
+        "2025-12-26",
+        "2025-12-27",
+        "2025-12-28",
+        "2025-12-29",
+        "2025-12-30",
+        "2025-12-31",
+        "2026-01-01",
+        "2026-01-02",
+        "2026-01-03",
+        "2026-01-04",
+        "2026-01-05",
+        "2026-01-06",
+        "2026-01-07",
+        "2026-01-08",
+        "2026-01-09",
+        "2026-01-10",
+        "2026-01-11",
+        "2026-01-12",
+        "2026-01-13",
+        "2026-01-14",
+        "2026-01-15",
+        "2026-01-16",
+        "2026-01-17",
+        "2026-01-18",
+        "2026-01-19",
+        "2026-01-20",
+        "2026-01-21",
+        "2026-01-22",
+        "2026-01-23",
+        "2026-01-24",
+        "2026-01-25",
+        "2026-01-26",
+        "2026-01-27",
+        "2026-01-28",
+        "2026-01-29",
+        "2026-01-30",
+        "2026-01-31",
+        "2026-02-01",
+        "2026-02-02",
+        "2026-02-03",
+        "2026-02-04",
+        "2026-02-05",
+        "2026-02-06",
+        "2026-02-07",
+        "2026-02-08",
+        "2026-02-09",
+        "2026-02-10",
+        "2026-02-11",
+        "2026-02-12",
+        "2026-02-13",
+        "2026-02-14",
+        "2026-02-15",
+        "2026-02-16",
+        "2026-02-17",
+        "2026-02-18",
+        "2026-02-19",
+        "2026-02-20",
+        "2026-02-21",
+        "2026-02-22",
+        "2026-02-23",
+        "2026-02-24",
+        "2026-02-25",
+        "2026-02-26",
+        "2026-02-27",
+        "2026-02-28",
+        "2026-03-01",
+        "2026-03-02",
+        "2026-03-03",
+        "2026-03-04",
+        "2026-03-05",
+        "2026-03-06"
+      ],
+      "reprocess_day_count": 91
+    },
+    {
+      "domain": "events_news",
+      "threshold_hours": 2,
+      "total_events": 14231,
+      "late_events": 3933,
+      "late_pct": 27.64,
+      "avg_lag_hours": 1.693,
+      "p50_lag_hours": 0.623,
+      "p95_lag_hours": 6.876,
+      "max_lag_hours": 31.921,
+      "lag_bucket_dist": {
+        "<30min": 6699,
+        "30min-2h": 3599,
+        "2-6h": 2974,
+        "6-12h": 798,
+        ">12h": 161
+      },
+      "platform_breakdown": [
+        {
+          "platform": "android",
+          "total_events": 4778,
+          "late_events": 2691,
+          "avg_lag_hours": 3.49,
+          "p95_lag_hours": 10.53
+        },
+        {
+          "platform": "ios",
+          "total_events": 4704,
+          "late_events": 1242,
+          "avg_lag_hours": 1.52,
+          "p95_lag_hours": 4.64
+        },
+        {
+          "platform": "web",
+          "total_events": 4749,
+          "late_events": 0,
+          "avg_lag_hours": 0.05,
+          "p95_lag_hours": 0.15
+        }
+      ],
+      "reprocess_dates": [
+        "2025-12-06",
+        "2025-12-07",
+        "2025-12-08",
+        "2025-12-09",
+        "2025-12-10",
+        "2025-12-11",
+        "2025-12-12",
+        "2025-12-13",
+        "2025-12-14",
+        "2025-12-15",
+        "2025-12-16",
+        "2025-12-17",
+        "2025-12-18",
+        "2025-12-19",
+        "2025-12-20",
+        "2025-12-21",
+        "2025-12-22",
+        "2025-12-23",
+        "2025-12-24",
+        "2025-12-25",
+        "2025-12-26",
+        "2025-12-27",
+        "2025-12-28",
+        "2025-12-29",
+        "2025-12-30",
+        "2025-12-31",
+        "2026-01-01",
+        "2026-01-02",
+        "2026-01-03",
+        "2026-01-04",
+        "2026-01-05",
+        "2026-01-06",
+        "2026-01-07",
+        "2026-01-08",
+        "2026-01-09",
+        "2026-01-10",
+        "2026-01-11",
+        "2026-01-12",
+        "2026-01-13",
+        "2026-01-14",
+        "2026-01-15",
+        "2026-01-16",
+        "2026-01-17",
+        "2026-01-18",
+        "2026-01-19",
+        "2026-01-20",
+        "2026-01-21",
+        "2026-01-22",
+        "2026-01-23",
+        "2026-01-24",
+        "2026-01-25",
+        "2026-01-26",
+        "2026-01-27",
+        "2026-01-28",
+        "2026-01-29",
+        "2026-01-30",
+        "2026-01-31",
+        "2026-02-01",
+        "2026-02-02",
+        "2026-02-03",
+        "2026-02-04",
+        "2026-02-05",
+        "2026-02-06",
+        "2026-02-07",
+        "2026-02-08",
+        "2026-02-09",
+        "2026-02-10",
+        "2026-02-11",
+        "2026-02-12",
+        "2026-02-13",
+        "2026-02-14",
+        "2026-02-15",
+        "2026-02-16",
+        "2026-02-17",
+        "2026-02-18",
+        "2026-02-19",
+        "2026-02-20",
+        "2026-02-21",
+        "2026-02-22",
+        "2026-02-23",
+        "2026-02-24",
+        "2026-02-25",
+        "2026-02-26",
+        "2026-02-27",
+        "2026-02-28",
+        "2026-03-01",
+        "2026-03-02",
+        "2026-03-03",
+        "2026-03-04",
+        "2026-03-05",
+        "2026-03-06"
+      ],
+      "reprocess_day_count": 91
+    },
+    {
+      "domain": "events_cooking",
+      "threshold_hours": 4,
+      "total_events": 49863,
+      "late_events": 6474,
+      "late_pct": 12.98,
+      "avg_lag_hours": 1.683,
+      "p50_lag_hours": 0.612,
+      "p95_lag_hours": 6.927,
+      "max_lag_hours": 33.075,
+      "lag_bucket_dist": {
+        "<30min": 23538,
+        "30min-2h": 12532,
+        "2-6h": 10508,
+        "6-12h": 2743,
+        ">12h": 542
+      },
+      "platform_breakdown": [
+        {
+          "platform": "android",
+          "total_events": 16656,
+          "late_events": 5350,
+          "avg_lag_hours": 3.5,
+          "p95_lag_hours": 10.43
+        },
+        {
+          "platform": "ios",
+          "total_events": 16571,
+          "late_events": 1124,
+          "avg_lag_hours": 1.5,
+          "p95_lag_hours": 4.47
+        },
+        {
+          "platform": "web",
+          "total_events": 16636,
+          "late_events": 0,
+          "avg_lag_hours": 0.05,
+          "p95_lag_hours": 0.15
+        }
+      ],
+      "reprocess_dates": [
+        "2025-12-06",
+        "2025-12-07",
+        "2025-12-08",
+        "2025-12-09",
+        "2025-12-10",
+        "2025-12-11",
+        "2025-12-12",
+        "2025-12-13",
+        "2025-12-14",
+        "2025-12-15",
+        "2025-12-16",
+        "2025-12-17",
+        "2025-12-18",
+        "2025-12-19",
+        "2025-12-20",
+        "2025-12-21",
+        "2025-12-22",
+        "2025-12-23",
+        "2025-12-24",
+        "2025-12-25",
+        "2025-12-26",
+        "2025-12-27",
+        "2025-12-28",
+        "2025-12-29",
+        "2025-12-30",
+        "2025-12-31",
+        "2026-01-01",
+        "2026-01-02",
+        "2026-01-03",
+        "2026-01-04",
+        "2026-01-05",
+        "2026-01-06",
+        "2026-01-07",
+        "2026-01-08",
+        "2026-01-09",
+        "2026-01-10",
+        "2026-01-11",
+        "2026-01-12",
+        "2026-01-13",
+        "2026-01-14",
+        "2026-01-15",
+        "2026-01-16",
+        "2026-01-17",
+        "2026-01-18",
+        "2026-01-19",
+        "2026-01-20",
+        "2026-01-21",
+        "2026-01-22",
+        "2026-01-23",
+        "2026-01-24",
+        "2026-01-25",
+        "2026-01-26",
+        "2026-01-27",
+        "2026-01-28",
+        "2026-01-29",
+        "2026-01-30",
+        "2026-01-31",
+        "2026-02-01",
+        "2026-02-02",
+        "2026-02-03",
+        "2026-02-04",
+        "2026-02-05",
+        "2026-02-06",
+        "2026-02-07",
+        "2026-02-08",
+        "2026-02-09",
+        "2026-02-10",
+        "2026-02-11",
+        "2026-02-12",
+        "2026-02-13",
+        "2026-02-14",
+        "2026-02-15",
+        "2026-02-16",
+        "2026-02-17",
+        "2026-02-18",
+        "2026-02-19",
+        "2026-02-20",
+        "2026-02-21",
+        "2026-02-22",
+        "2026-02-23",
+        "2026-02-24",
+        "2026-02-25",
+        "2026-02-26",
+        "2026-02-27",
+        "2026-02-28",
+        "2026-03-01",
+        "2026-03-02",
+        "2026-03-03",
+        "2026-03-04",
+        "2026-03-05",
+        "2026-03-06"
+      ],
+      "reprocess_day_count": 91
+    },
+    {
+      "domain": "events_athletic",
+      "threshold_hours": 3,
+      "total_events": 63527,
+      "late_events": 11877,
+      "late_pct": 18.7,
+      "avg_lag_hours": 1.697,
+      "p50_lag_hours": 0.624,
+      "p95_lag_hours": 6.938,
+      "max_lag_hours": 40.086,
+      "lag_bucket_dist": {
+        "<30min": 29863,
+        "30min-2h": 16039,
+        "2-6h": 13419,
+        "6-12h": 3444,
+        ">12h": 762
+      },
+      "platform_breakdown": [
+        {
+          "platform": "android",
+          "total_events": 21157,
+          "late_events": 9004,
+          "avg_lag_hours": 3.54,
+          "p95_lag_hours": 10.7
+        },
+        {
+          "platform": "ios",
+          "total_events": 21298,
+          "late_events": 2873,
+          "avg_lag_hours": 1.5,
+          "p95_lag_hours": 4.46
+        },
+        {
+          "platform": "web",
+          "total_events": 21072,
+          "late_events": 0,
+          "avg_lag_hours": 0.05,
+          "p95_lag_hours": 0.15
+        }
+      ],
+      "reprocess_dates": [
+        "2025-12-06",
+        "2025-12-07",
+        "2025-12-08",
+        "2025-12-09",
+        "2025-12-10",
+        "2025-12-11",
+        "2025-12-12",
+        "2025-12-13",
+        "2025-12-14",
+        "2025-12-15",
+        "2025-12-16",
+        "2025-12-17",
+        "2025-12-18",
+        "2025-12-19",
+        "2025-12-20",
+        "2025-12-21",
+        "2025-12-22",
+        "2025-12-23",
+        "2025-12-24",
+        "2025-12-25",
+        "2025-12-26",
+        "2025-12-27",
+        "2025-12-28",
+        "2025-12-29",
+        "2025-12-30",
+        "2025-12-31",
+        "2026-01-01",
+        "2026-01-02",
+        "2026-01-03",
+        "2026-01-04",
+        "2026-01-05",
+        "2026-01-06",
+        "2026-01-07",
+        "2026-01-08",
+        "2026-01-09",
+        "2026-01-10",
+        "2026-01-11",
+        "2026-01-12",
+        "2026-01-13",
+        "2026-01-14",
+        "2026-01-15",
+        "2026-01-16",
+        "2026-01-17",
+        "2026-01-18",
+        "2026-01-19",
+        "2026-01-20",
+        "2026-01-21",
+        "2026-01-22",
+        "2026-01-23",
+        "2026-01-24",
+        "2026-01-25",
+        "2026-01-26",
+        "2026-01-27",
+        "2026-01-28",
+        "2026-01-29",
+        "2026-01-30",
+        "2026-01-31",
+        "2026-02-01",
+        "2026-02-02",
+        "2026-02-03",
+        "2026-02-04",
+        "2026-02-05",
+        "2026-02-06",
+        "2026-02-07",
+        "2026-02-08",
+        "2026-02-09",
+        "2026-02-10",
+        "2026-02-11",
+        "2026-02-12",
+        "2026-02-13",
+        "2026-02-14",
+        "2026-02-15",
+        "2026-02-16",
+        "2026-02-17",
+        "2026-02-18",
+        "2026-02-19",
+        "2026-02-20",
+        "2026-02-21",
+        "2026-02-22",
+        "2026-02-23",
+        "2026-02-24",
+        "2026-02-25",
+        "2026-02-26",
+        "2026-02-27",
+        "2026-02-28",
+        "2026-03-01",
+        "2026-03-02",
+        "2026-03-03",
+        "2026-03-04",
+        "2026-03-05",
+        "2026-03-06"
+      ],
+      "reprocess_day_count": 91
+    }
+  ],
+  "reprocessing_manifest": {
+    "generated_at": "2026-03-06T14:36:11.051622",
+    "total_reprocess_jobs": 364,
+    "entries": [
+      {
+        "domain": "events_games",
+        "date": "2025-12-06",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2025-12-06, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2025-12-07",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2025-12-07, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2025-12-08",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2025-12-08, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2025-12-09",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2025-12-09, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2025-12-10",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2025-12-10, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2025-12-11",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2025-12-11, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2025-12-12",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2025-12-12, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2025-12-13",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2025-12-13, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2025-12-14",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2025-12-14, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2025-12-15",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2025-12-15, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2025-12-16",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2025-12-16, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2025-12-17",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2025-12-17, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2025-12-18",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2025-12-18, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2025-12-19",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2025-12-19, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2025-12-20",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2025-12-20, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2025-12-21",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2025-12-21, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2025-12-22",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2025-12-22, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2025-12-23",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2025-12-23, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2025-12-24",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2025-12-24, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2025-12-25",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2025-12-25, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2025-12-26",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2025-12-26, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2025-12-27",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2025-12-27, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2025-12-28",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2025-12-28, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2025-12-29",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2025-12-29, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2025-12-30",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2025-12-30, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2025-12-31",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2025-12-31, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-01-01",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-01-01, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-01-02",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-01-02, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-01-03",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-01-03, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-01-04",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-01-04, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-01-05",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-01-05, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-01-06",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-01-06, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-01-07",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-01-07, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-01-08",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-01-08, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-01-09",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-01-09, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-01-10",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-01-10, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-01-11",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-01-11, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-01-12",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-01-12, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-01-13",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-01-13, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-01-14",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-01-14, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-01-15",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-01-15, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-01-16",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-01-16, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-01-17",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-01-17, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-01-18",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-01-18, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-01-19",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-01-19, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-01-20",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-01-20, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-01-21",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-01-21, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-01-22",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-01-22, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-01-23",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-01-23, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-01-24",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-01-24, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-01-25",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-01-25, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-01-26",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-01-26, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-01-27",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-01-27, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-01-28",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-01-28, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-01-29",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-01-29, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-01-30",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-01-30, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-01-31",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-01-31, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-02-01",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-02-01, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-02-02",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-02-02, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-02-03",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-02-03, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-02-04",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-02-04, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-02-05",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-02-05, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-02-06",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-02-06, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-02-07",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-02-07, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-02-08",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-02-08, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-02-09",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-02-09, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-02-10",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-02-10, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-02-11",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-02-11, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-02-12",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-02-12, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-02-13",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-02-13, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-02-14",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-02-14, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-02-15",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-02-15, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-02-16",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-02-16, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-02-17",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-02-17, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-02-18",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-02-18, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-02-19",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-02-19, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-02-20",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-02-20, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-02-21",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-02-21, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-02-22",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-02-22, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-02-23",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-02-23, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-02-24",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-02-24, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-02-25",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-02-25, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-02-26",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-02-26, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-02-27",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-02-27, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-02-28",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-02-28, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-03-01",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-03-01, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-03-02",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-03-02, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-03-03",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-03-03, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-03-04",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-03-04, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-03-05",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-03-05, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_games",
+        "date": "2026-03-06",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_games --vars '{run_date: 2026-03-06, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2025-12-06",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2025-12-06, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2025-12-07",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2025-12-07, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2025-12-08",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2025-12-08, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2025-12-09",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2025-12-09, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2025-12-10",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2025-12-10, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2025-12-11",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2025-12-11, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2025-12-12",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2025-12-12, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2025-12-13",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2025-12-13, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2025-12-14",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2025-12-14, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2025-12-15",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2025-12-15, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2025-12-16",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2025-12-16, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2025-12-17",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2025-12-17, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2025-12-18",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2025-12-18, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2025-12-19",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2025-12-19, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2025-12-20",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2025-12-20, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2025-12-21",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2025-12-21, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2025-12-22",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2025-12-22, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2025-12-23",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2025-12-23, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2025-12-24",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2025-12-24, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2025-12-25",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2025-12-25, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2025-12-26",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2025-12-26, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2025-12-27",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2025-12-27, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2025-12-28",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2025-12-28, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2025-12-29",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2025-12-29, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2025-12-30",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2025-12-30, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2025-12-31",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2025-12-31, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-01-01",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-01-01, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-01-02",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-01-02, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-01-03",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-01-03, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-01-04",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-01-04, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-01-05",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-01-05, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-01-06",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-01-06, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-01-07",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-01-07, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-01-08",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-01-08, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-01-09",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-01-09, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-01-10",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-01-10, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-01-11",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-01-11, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-01-12",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-01-12, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-01-13",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-01-13, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-01-14",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-01-14, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-01-15",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-01-15, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-01-16",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-01-16, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-01-17",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-01-17, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-01-18",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-01-18, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-01-19",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-01-19, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-01-20",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-01-20, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-01-21",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-01-21, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-01-22",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-01-22, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-01-23",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-01-23, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-01-24",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-01-24, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-01-25",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-01-25, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-01-26",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-01-26, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-01-27",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-01-27, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-01-28",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-01-28, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-01-29",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-01-29, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-01-30",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-01-30, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-01-31",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-01-31, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-02-01",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-02-01, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-02-02",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-02-02, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-02-03",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-02-03, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-02-04",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-02-04, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-02-05",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-02-05, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-02-06",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-02-06, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-02-07",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-02-07, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-02-08",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-02-08, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-02-09",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-02-09, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-02-10",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-02-10, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-02-11",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-02-11, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-02-12",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-02-12, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-02-13",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-02-13, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-02-14",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-02-14, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-02-15",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-02-15, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-02-16",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-02-16, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-02-17",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-02-17, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-02-18",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-02-18, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-02-19",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-02-19, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-02-20",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-02-20, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-02-21",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-02-21, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-02-22",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-02-22, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-02-23",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-02-23, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-02-24",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-02-24, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-02-25",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-02-25, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-02-26",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-02-26, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-02-27",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-02-27, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-02-28",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-02-28, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-03-01",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-03-01, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-03-02",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-03-02, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-03-03",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-03-03, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-03-04",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-03-04, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-03-05",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-03-05, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_news",
+        "date": "2026-03-06",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_news --vars '{run_date: 2026-03-06, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2025-12-06",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2025-12-06, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2025-12-07",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2025-12-07, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2025-12-08",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2025-12-08, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2025-12-09",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2025-12-09, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2025-12-10",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2025-12-10, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2025-12-11",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2025-12-11, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2025-12-12",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2025-12-12, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2025-12-13",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2025-12-13, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2025-12-14",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2025-12-14, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2025-12-15",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2025-12-15, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2025-12-16",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2025-12-16, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2025-12-17",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2025-12-17, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2025-12-18",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2025-12-18, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2025-12-19",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2025-12-19, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2025-12-20",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2025-12-20, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2025-12-21",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2025-12-21, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2025-12-22",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2025-12-22, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2025-12-23",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2025-12-23, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2025-12-24",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2025-12-24, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2025-12-25",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2025-12-25, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2025-12-26",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2025-12-26, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2025-12-27",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2025-12-27, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2025-12-28",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2025-12-28, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2025-12-29",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2025-12-29, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2025-12-30",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2025-12-30, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2025-12-31",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2025-12-31, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-01-01",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-01-01, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-01-02",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-01-02, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-01-03",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-01-03, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-01-04",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-01-04, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-01-05",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-01-05, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-01-06",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-01-06, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-01-07",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-01-07, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-01-08",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-01-08, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-01-09",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-01-09, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-01-10",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-01-10, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-01-11",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-01-11, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-01-12",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-01-12, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-01-13",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-01-13, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-01-14",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-01-14, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-01-15",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-01-15, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-01-16",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-01-16, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-01-17",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-01-17, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-01-18",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-01-18, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-01-19",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-01-19, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-01-20",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-01-20, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-01-21",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-01-21, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-01-22",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-01-22, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-01-23",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-01-23, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-01-24",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-01-24, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-01-25",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-01-25, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-01-26",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-01-26, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-01-27",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-01-27, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-01-28",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-01-28, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-01-29",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-01-29, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-01-30",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-01-30, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-01-31",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-01-31, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-02-01",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-02-01, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-02-02",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-02-02, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-02-03",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-02-03, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-02-04",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-02-04, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-02-05",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-02-05, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-02-06",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-02-06, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-02-07",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-02-07, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-02-08",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-02-08, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-02-09",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-02-09, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-02-10",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-02-10, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-02-11",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-02-11, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-02-12",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-02-12, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-02-13",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-02-13, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-02-14",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-02-14, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-02-15",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-02-15, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-02-16",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-02-16, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-02-17",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-02-17, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-02-18",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-02-18, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-02-19",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-02-19, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-02-20",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-02-20, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-02-21",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-02-21, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-02-22",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-02-22, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-02-23",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-02-23, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-02-24",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-02-24, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-02-25",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-02-25, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-02-26",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-02-26, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-02-27",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-02-27, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-02-28",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-02-28, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-03-01",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-03-01, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-03-02",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-03-02, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-03-03",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-03-03, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-03-04",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-03-04, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-03-05",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-03-05, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_cooking",
+        "date": "2026-03-06",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_cooking --vars '{run_date: 2026-03-06, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2025-12-06",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2025-12-06, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2025-12-07",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2025-12-07, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2025-12-08",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2025-12-08, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2025-12-09",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2025-12-09, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2025-12-10",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2025-12-10, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2025-12-11",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2025-12-11, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2025-12-12",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2025-12-12, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2025-12-13",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2025-12-13, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2025-12-14",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2025-12-14, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2025-12-15",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2025-12-15, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2025-12-16",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2025-12-16, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2025-12-17",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2025-12-17, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2025-12-18",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2025-12-18, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2025-12-19",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2025-12-19, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2025-12-20",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2025-12-20, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2025-12-21",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2025-12-21, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2025-12-22",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2025-12-22, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2025-12-23",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2025-12-23, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2025-12-24",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2025-12-24, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2025-12-25",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2025-12-25, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2025-12-26",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2025-12-26, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2025-12-27",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2025-12-27, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2025-12-28",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2025-12-28, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2025-12-29",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2025-12-29, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2025-12-30",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2025-12-30, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2025-12-31",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2025-12-31, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-01-01",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-01-01, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-01-02",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-01-02, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-01-03",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-01-03, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-01-04",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-01-04, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-01-05",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-01-05, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-01-06",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-01-06, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-01-07",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-01-07, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-01-08",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-01-08, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-01-09",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-01-09, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-01-10",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-01-10, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-01-11",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-01-11, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-01-12",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-01-12, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-01-13",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-01-13, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-01-14",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-01-14, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-01-15",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-01-15, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-01-16",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-01-16, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-01-17",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-01-17, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-01-18",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-01-18, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-01-19",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-01-19, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-01-20",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-01-20, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-01-21",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-01-21, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-01-22",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-01-22, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-01-23",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-01-23, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-01-24",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-01-24, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-01-25",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-01-25, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-01-26",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-01-26, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-01-27",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-01-27, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-01-28",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-01-28, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-01-29",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-01-29, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-01-30",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-01-30, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-01-31",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-01-31, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-02-01",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-02-01, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-02-02",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-02-02, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-02-03",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-02-03, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-02-04",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-02-04, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-02-05",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-02-05, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-02-06",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-02-06, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-02-07",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-02-07, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-02-08",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-02-08, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-02-09",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-02-09, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-02-10",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-02-10, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-02-11",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-02-11, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-02-12",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-02-12, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-02-13",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-02-13, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-02-14",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-02-14, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-02-15",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-02-15, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-02-16",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-02-16, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-02-17",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-02-17, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-02-18",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-02-18, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-02-19",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-02-19, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-02-20",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-02-20, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-02-21",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-02-21, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-02-22",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-02-22, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-02-23",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-02-23, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-02-24",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-02-24, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-02-25",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-02-25, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-02-26",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-02-26, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-02-27",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-02-27, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-02-28",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-02-28, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-03-01",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-03-01, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-03-02",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-03-02, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-03-03",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-03-03, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-03-04",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-03-04, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-03-05",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-03-05, full_refresh: true}'",
+        "priority": "high"
+      },
+      {
+        "domain": "events_athletic",
+        "date": "2026-03-06",
+        "late_pct": null,
+        "dbt_command": "dbt run --select staging.events_athletic --vars '{run_date: 2026-03-06, full_refresh: true}'",
+        "priority": "high"
+      }
+    ]
+  }
+}

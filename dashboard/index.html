@@ -1,0 +1,2064 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NYT Data Platform — Subscription Analytics</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --surface2: #1a1a26;
+      --surface3: #22223a;
+      --border: rgba(255, 255, 255, 0.07);
+      --text: #e8e8f0;
+      --muted: #7070a0;
+      --accent: #5b7bff;
+      --accent2: #a855f7;
+      --green: #22c55e;
+      --yellow: #f59e0b;
+      --red: #ef4444;
+      --nyt-red: #d93025;
+      --radius: 14px;
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+    }
+
+    /* ── header ── */
+    .header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      background: var(--nyt-red);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -1px;
+    }
+
+    .logo-text {
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .logo-sub {
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .badge {
+      background: rgba(91, 123, 255, 0.15);
+      color: var(--accent);
+      border: 1px solid rgba(91, 123, 255, 0.3);
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .run-time {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* ── nav tabs ── */
+    .nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+      display: flex;
+      gap: 0;
+    }
+
+    .nav-tab {
+      padding: 14px 20px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .nav-tab:hover {
+      color: var(--text);
+    }
+
+    .nav-tab.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ── layout ── */
+    .main {
+      padding: 28px 32px;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── KPI cards ── */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .kpi {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+
+    .kpi:hover {
+      transform: translateY(-2px);
+    }
+
+    .kpi::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+    }
+
+    .kpi.blue::before {
+      background: linear-gradient(90deg, var(--accent), #818cf8);
+    }
+
+    .kpi.purple::before {
+      background: linear-gradient(90deg, var(--accent2), #ec4899);
+    }
+
+    .kpi.green::before {
+      background: linear-gradient(90deg, var(--green), #10b981);
+    }
+
+    .kpi.yellow::before {
+      background: linear-gradient(90deg, var(--yellow), #f97316);
+    }
+
+    .kpi.red::before {
+      background: linear-gradient(90deg, var(--red), #f97316);
+    }
+
+    .kpi.teal::before {
+      background: linear-gradient(90deg, #06b6d4, #0ea5e9);
+    }
+
+    .kpi-label {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .kpi-value {
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .kpi-delta {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .kpi-delta .up {
+      color: var(--green);
+    }
+
+    .kpi-delta .down {
+      color: var(--red);
+    }
+
+    /* ── chart cards ── */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .grid-a {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+
+    .card-title {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .card-sub {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .card-tag {
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 99px;
+      font-weight: 600;
+    }
+
+    .tag-mart {
+      background: rgba(91, 123, 255, 0.1);
+      color: #818cf8;
+    }
+
+    .tag-dq {
+      background: rgba(34, 197, 94, 0.1);
+      color: var(--green);
+    }
+
+    .chart-wrap {
+      position: relative;
+      height: 220px;
+    }
+
+    .chart-wrap.tall {
+      height: 280px;
+    }
+
+    /* ── alert banner ── */
+    .alert-banner {
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .alert-breaking {
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .alert-warning {
+      background: rgba(245, 158, 11, 0.08);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .alert-clean {
+      background: rgba(34, 197, 94, 0.08);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+    }
+
+    .alert-icon {
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .alert-body {
+      flex: 1;
+    }
+
+    .alert-title {
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .alert-desc {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── drift table ── */
+    .drift-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .drift-event {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      margin-bottom: 6px;
+    }
+
+    .drift-breaking {
+      background: rgba(239, 68, 68, 0.07);
+      border-left: 3px solid #ef4444;
+    }
+
+    .drift-warning {
+      background: rgba(245, 158, 11, 0.07);
+      border-left: 3px solid #f59e0b;
+    }
+
+    .drift-clean {
+      background: rgba(34, 197, 94, 0.07);
+      border-left: 3px solid #22c55e;
+    }
+
+    .drift-badge {
+      font-size: 9px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 99px;
+      white-space: nowrap;
+    }
+
+    .drift-badge-breaking {
+      background: rgba(239, 68, 68, 0.2);
+      color: #ef4444;
+    }
+
+    .drift-badge-warning {
+      background: rgba(245, 158, 11, 0.2);
+      color: #f59e0b;
+    }
+
+    .drift-badge-warning2 {
+      background: rgba(168, 85, 247, 0.2);
+      color: #c084fc;
+    }
+
+    .drift-col-name {
+      font-size: 11px;
+      font-weight: 600;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 2px;
+    }
+
+    .drift-detail {
+      font-size: 10px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── metrics layer ── */
+    .metric-def {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 18px;
+    }
+
+    .metric-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .metric-name {
+      font-size: 16px;
+      font-weight: 800;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent);
+    }
+
+    .metric-version {
+      font-size: 10px;
+      background: rgba(91, 123, 255, 0.1);
+      color: var(--accent);
+      border: 1px solid rgba(91, 123, 255, 0.3);
+      padding: 3px 10px;
+      border-radius: 99px;
+      font-weight: 600;
+    }
+
+    .metric-definition-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .metric-product-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+    }
+
+    .metric-product-name {
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .metric-event {
+      font-size: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent);
+      background: rgba(91, 123, 255, 0.08);
+      padding: 4px 8px;
+      border-radius: 4px;
+      margin-bottom: 6px;
+      display: inline-block;
+    }
+
+    .metric-rationale {
+      font-size: 10px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .metric-conflict {
+      background: var(--surface2);
+      border-radius: 10px;
+      padding: 14px 18px;
+    }
+
+    .conflict-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 7px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .conflict-row:last-child {
+      border-bottom: none;
+    }
+
+    .conflict-team {
+      font-size: 11px;
+      font-weight: 600;
+      min-width: 120px;
+    }
+
+    .conflict-def {
+      font-size: 10px;
+      color: var(--muted);
+      flex: 1;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .conflict-problem {
+      font-size: 10px;
+    }
+
+    /* ── late arrival ── */
+    .lag-platform-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .lag-platform-row:last-child {
+      border-bottom: none;
+    }
+
+    .lag-platform {
+      font-size: 11px;
+      font-weight: 600;
+      min-width: 70px;
+    }
+
+    .lag-bar-wrap {
+      flex: 1;
+      height: 6px;
+      background: var(--surface3);
+      border-radius: 3px;
+    }
+
+    .lag-bar {
+      height: 6px;
+      border-radius: 3px;
+      transition: width 1s ease;
+    }
+
+    .lag-label {
+      font-size: 10px;
+      color: var(--muted);
+      min-width: 80px;
+      text-align: right;
+    }
+
+    /* ── pipeline diagram ── */
+    .pipeline-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .pipeline-box {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 11px;
+      font-weight: 600;
+      text-align: center;
+      width: 160px;
+      position: relative;
+      transition: all 0.2s;
+    }
+
+    .pipeline-box:hover {
+      border-color: var(--accent);
+    }
+
+    .pipeline-box.new-feature {
+      border-color: rgba(34, 197, 94, 0.5);
+      background: rgba(34, 197, 94, 0.05);
+    }
+
+    .pipeline-arrow {
+      font-size: 20px;
+      color: var(--muted);
+      margin: 6px 0;
+    }
+
+    .pipeline-tag {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-top: 4px;
+    }
+
+    /* ── DQ panel ── */
+    .dq-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .dq-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+    }
+
+    .dq-name {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      margin-bottom: 12px;
+    }
+
+    .dq-score {
+      font-size: 30px;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .dq-pass {
+      color: var(--green);
+    }
+
+    .dq-warn {
+      color: var(--yellow);
+    }
+
+    .dq-fail {
+      color: var(--red);
+    }
+
+    .dq-dims {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .dq-dim {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+    }
+
+    .dq-dim-bar {
+      width: 100%;
+      height: 3px;
+      background: var(--surface3);
+      border-radius: 2px;
+      margin-top: 2px;
+    }
+
+    .dq-dim-fill {
+      height: 3px;
+      border-radius: 2px;
+      transition: width 1s ease;
+    }
+
+    /* ── lineage ── */
+    .lineage {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 18px;
+    }
+
+    .lineage-container {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+
+    .lineage-col {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-width: 140px;
+    }
+
+    .lineage-col-title {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .lineage-node {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 10px;
+      font-weight: 500;
+      cursor: default;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .lineage-node:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .lineage-node.src {
+      border-color: rgba(168, 85, 247, 0.4);
+    }
+
+    .lineage-node.stg {
+      border-color: rgba(91, 123, 255, 0.4);
+    }
+
+    .lineage-node.mart {
+      border-color: rgba(34, 197, 94, 0.4);
+    }
+
+    .lineage-node.metric {
+      border-color: rgba(245, 158, 11, 0.3);
+    }
+
+    .lineage-arrow {
+      display: flex;
+      align-items: center;
+      padding: 0 6px;
+      color: var(--muted);
+      font-size: 18px;
+      margin-top: 30px;
+    }
+
+    /* ── tabs page visibility ── */
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    /* ── table ── */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+
+    .data-table th {
+      text-align: left;
+      padding: 10px 14px;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .data-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    .data-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 99px;
+      font-size: 10px;
+      font-weight: 600;
+    }
+
+    .pill-green {
+      background: rgba(34, 197, 94, 0.12);
+      color: var(--green);
+    }
+
+    .pill-yellow {
+      background: rgba(245, 158, 11, 0.12);
+      color: var(--yellow);
+    }
+
+    .pill-red {
+      background: rgba(239, 68, 68, 0.12);
+      color: var(--red);
+    }
+
+    .pill-blue {
+      background: rgba(91, 123, 255, 0.12);
+      color: var(--accent);
+    }
+
+    /* ── product badges ── */
+    .prod-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 600;
+    }
+
+    .prod-news {
+      background: rgba(239, 68, 68, 0.1);
+      color: #f87171;
+    }
+
+    .prod-games {
+      background: rgba(168, 85, 247, 0.1);
+      color: #c084fc;
+    }
+
+    .prod-cooking {
+      background: rgba(245, 158, 11, 0.1);
+      color: #fbbf24;
+    }
+
+    .prod-athletic {
+      background: rgba(91, 123, 255, 0.1);
+      color: #818cf8;
+    }
+
+    /* ── scroll ── */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--surface3);
+      border-radius: 3px;
+    }
+
+    @media (max-width: 1200px) {
+      .kpi-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .grid-3 {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .dq-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="logo">
+      <div class="logo-mark">NYT</div>
+      <div>
+        <div class="logo-text">Data Platform</div>
+        <div class="logo-sub">SUBSCRIPTION ANALYTICS · ANALYTICS ENGINEERING</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <span class="badge">✓ dbt v1.8</span>
+      <span class="badge">✓ Airflow DAG</span>
+      <span class="badge">✓ GCP BigQuery</span>
+      <span class="run-time" id="run-time">—</span>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <div class="nav-tab active" data-tab="overview">📊 Overview</div>
+    <div class="nav-tab" data-tab="subscriptions">👥 Subscriptions</div>
+    <div class="nav-tab" data-tab="engagement">🎮 Engagement</div>
+    <div class="nav-tab" data-tab="dq">🔍 Data Quality</div>
+    <div class="nav-tab" data-tab="lineage">🗺 Lineage</div>
+    <div class="nav-tab" data-tab="platform" style="color:#22c55e;font-weight:700">⚡ Platform Engineering</div>
+  </nav>
+
+  <main class="main">
+
+    <!-- ════════ OVERVIEW ════════ -->
+    <div class="page active" id="page-overview">
+
+      <div class="section-title">Key Performance Indicators</div>
+      <div class="kpi-grid">
+        <div class="kpi blue">
+          <div class="kpi-label">Total Subscribers</div>
+          <div class="kpi-value">5,000</div>
+          <div class="kpi-delta">Universe: 90-day window</div>
+        </div>
+        <div class="kpi purple">
+          <div class="kpi-label">Bundle Subscribers</div>
+          <div class="kpi-value">51.0<span style="font-size:16px">%</span></div>
+          <div class="kpi-delta"><span class="up">↑ 3.2%</span> vs prior quarter</div>
+        </div>
+        <div class="kpi green">
+          <div class="kpi-label">Total Events Ingested</div>
+          <div class="kpi-value">238K</div>
+          <div class="kpi-delta">News · Games · Cooking · Athletic</div>
+        </div>
+        <div class="kpi yellow">
+          <div class="kpi-label">Avg Subscriber Tenure</div>
+          <div class="kpi-value">225<span style="font-size:14px">d</span></div>
+          <div class="kpi-delta">Active subscribers only</div>
+        </div>
+        <div class="kpi teal">
+          <div class="kpi-label">Est. MRR</div>
+          <div class="kpi-value">$8.9K</div>
+          <div class="kpi-delta">Weighted by plan tier</div>
+        </div>
+        <div class="kpi red">
+          <div class="kpi-label">DQ Score (avg)</div>
+          <div class="kpi-value">99.9<span style="font-size:14px">%</span></div>
+          <div class="kpi-delta"><span class="up">✓ All datasets PASS</span></div>
+        </div>
+      </div>
+
+      <div class="grid-a">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Daily Active Subscribers — News Domain</div>
+              <div class="card-sub">mart_subscriber_health · Grain: subscriber × day</div>
+            </div>
+            <span class="card-tag tag-mart">MART</span>
+          </div>
+          <div class="chart-wrap tall"><canvas id="dailyNewsChart"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Weekly Active by Product</div>
+              <div class="card-sub">Cross-domain join · Last 7 days</div>
+            </div>
+            <span class="card-tag tag-mart">MART</span>
+          </div>
+          <div class="chart-wrap tall"><canvas id="weeklyActiveChart"></canvas></div>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Subscription Plan Mix</div>
+              <div class="card-sub">stg_subscribers · plan_type</div>
+            </div>
+            <span class="card-tag tag-mart">STAGING</span>
+          </div>
+          <div class="chart-wrap"><canvas id="planPieChart"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Acquisition Channel</div>
+              <div class="card-sub">Attribution mix</div>
+            </div>
+          </div>
+          <div class="chart-wrap"><canvas id="acqChart"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Cross-Product Engagement</div>
+              <div class="card-sub">Products engaged per subscriber</div>
+            </div>
+            <span class="card-tag tag-mart">MART</span>
+          </div>
+          <div class="chart-wrap"><canvas id="multiProductChart"></canvas></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════ SUBSCRIPTIONS ════════ -->
+    <div class="page" id="page-subscriptions">
+      <div class="section-title">Subscriber Domain</div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Bundle Tier Distribution</div>
+              <div class="card-sub">Full Bundle · Partial Bundle · Single Product</div>
+            </div>
+          </div>
+          <div class="chart-wrap tall"><canvas id="tierChart"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Churn Rate by Plan Type</div>
+              <div class="card-sub">Higher churn = single product plans (expected)</div>
+            </div>
+          </div>
+          <div class="chart-wrap tall"><canvas id="churnChart"></canvas></div>
+        </div>
+      </div>
+      <div class="card" style="margin-bottom:18px">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Plan Performance — mart_subscriber_health</div>
+          </div>
+          <span class="card-tag tag-mart">MART</span>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Plan Type</th>
+              <th>Subscribers</th>
+              <th>Bundle Tier</th>
+              <th>Churn Risk</th>
+              <th>Est. MRR/sub</th>
+              <th>Key Insight</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="prod-badge prod-news">bundle_all</span></td>
+              <td>1,547</td>
+              <td><span class="pill pill-green">Full Bundle</span></td>
+              <td><span class="pill pill-green">Low</span></td>
+              <td>$20.00</td>
+              <td>26× higher LTV per research</td>
+            </tr>
+            <tr>
+              <td><span class="prod-badge prod-athletic">bundle_3</span></td>
+              <td>1,001</td>
+              <td><span class="pill pill-blue">Partial Bundle</span></td>
+              <td><span class="pill pill-yellow">Medium</span></td>
+              <td>$14.00</td>
+              <td>Migration target → bundle_all</td>
+            </tr>
+            <tr>
+              <td><span class="prod-badge prod-news">news_only</span></td>
+              <td>1,186</td>
+              <td><span class="pill pill-yellow">Single</span></td>
+              <td><span class="pill pill-yellow">Medium</span></td>
+              <td>$5.00</td>
+              <td>Upsell via Games cross-promo</td>
+            </tr>
+            <tr>
+              <td><span class="prod-badge prod-games">games_only</span></td>
+              <td>620</td>
+              <td><span class="pill pill-yellow">Single</span></td>
+              <td><span class="pill pill-yellow">Medium</span></td>
+              <td>$5.00</td>
+              <td>Wordle entry-point → bundle</td>
+            </tr>
+            <tr>
+              <td><span class="prod-badge prod-cooking">cooking_only</span></td>
+              <td>378</td>
+              <td><span class="pill pill-yellow">Single</span></td>
+              <td><span class="pill pill-red">High</span></td>
+              <td>$5.00</td>
+              <td>Seasonal spikes — monitor</td>
+            </tr>
+            <tr>
+              <td><span class="prod-badge prod-athletic">athletic_only</span></td>
+              <td>268</td>
+              <td><span class="pill pill-yellow">Single</span></td>
+              <td><span class="pill pill-red">High</span></td>
+              <td>$5.00</td>
+              <td>Historical high churn, improving</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ════════ ENGAGEMENT ════════ -->
+    <div class="page" id="page-engagement">
+      <div class="section-title">Cross-Product Engagement Analytics</div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Games Completions by Title</div>
+              <div class="card-sub">Grain: game_complete events · 90-day window</div>
+            </div>
+            <span class="card-tag tag-mart">GAMES DOMAIN</span>
+          </div>
+          <div class="chart-wrap tall"><canvas id="gamesBreakdownChart"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">News: Engagement by Section</div>
+              <div class="card-sub">Unique subscribers per section</div>
+            </div>
+            <span class="card-tag tag-mart">NEWS DOMAIN</span>
+          </div>
+          <div class="chart-wrap tall"><canvas id="sectionChart"></canvas></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Product Engagement Matrix — Key Metrics</div>
+          </div>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Weekly Active Users</th>
+              <th>Domain Model</th>
+              <th>Key Event</th>
+              <th>DQ Status</th>
+              <th>Staging Model</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="prod-badge prod-news">📰 News</span></td>
+              <td>957</td>
+              <td><code style="font-size:10px;color:var(--accent)">mart_subscriber_health</code></td>
+              <td>article_view · article_complete</td>
+              <td><span class="pill pill-green">PASS 99.9%</span></td>
+              <td><code style="font-size:10px;color:var(--muted)">stg_events_news</code></td>
+            </tr>
+            <tr>
+              <td><span class="prod-badge prod-games">🎮 Games</span></td>
+              <td>2,953</td>
+              <td><code style="font-size:10px;color:var(--accent)">mart_subscriber_health</code></td>
+              <td>game_complete · streak_milestone</td>
+              <td><span class="pill pill-green">PASS 99.9%</span></td>
+              <td><code style="font-size:10px;color:var(--muted)">stg_events_games</code></td>
+            </tr>
+            <tr>
+              <td><span class="prod-badge prod-cooking">🍳 Cooking</span></td>
+              <td>2,201</td>
+              <td><code style="font-size:10px;color:var(--accent)">mart_subscriber_health</code></td>
+              <td>cook_mode_complete · save</td>
+              <td><span class="pill pill-green">PASS 99.9%</span></td>
+              <td><code style="font-size:10px;color:var(--muted)">stg_events_cooking</code></td>
+            </tr>
+            <tr>
+              <td><span class="prod-badge prod-athletic">🏆 Athletic</span></td>
+              <td>2,276</td>
+              <td><code style="font-size:10px;color:var(--accent)">mart_subscriber_health</code></td>
+              <td>article_view · liveblog_view</td>
+              <td><span class="pill pill-green">PASS 99.9%</span></td>
+              <td><code style="font-size:10px;color:var(--muted)">stg_events_athletic</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ════════ DATA QUALITY ════════ -->
+    <div class="page" id="page-dq">
+      <div class="section-title">Enterprise Data Quality Framework — 5-Dimension DQ Scorecard</div>
+
+      <div class="dq-grid" id="dq-cards"></div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">DQ Score by Dataset</div>
+              <div class="card-sub">Weighted: Completeness(30%) · Uniqueness(20%) · Referential(20%) · Timeliness(15%) ·
+                Validity(15%)</div>
+            </div>
+            <span class="card-tag tag-dq">FRAMEWORK</span>
+          </div>
+          <div class="chart-wrap tall"><canvas id="dqRadarChart"></canvas></div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">DQ Issues Detected (Dirty Run)</div>
+              <div class="card-sub">Issues injected to demonstrate framework detection</div>
+            </div>
+            <span class="card-tag tag-dq">ANOMALIES</span>
+          </div>
+          <table class="data-table" style="margin-top:8px">
+            <thead>
+              <tr>
+                <th>Dataset</th>
+                <th>Issue Type</th>
+                <th>Count</th>
+                <th>Dimension</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>subscribers</td>
+                <td>Duplicate subscriber_id</td>
+                <td>50</td>
+                <td><span class="pill pill-yellow">Uniqueness</span></td>
+                <td>Dedup in stg_subscribers</td>
+              </tr>
+              <tr>
+                <td>events_news</td>
+                <td>Orphaned events (null sub_id)</td>
+                <td>284</td>
+                <td><span class="pill pill-red">Referential</span></td>
+                <td>Quarantine table</td>
+              </tr>
+              <tr>
+                <td>events_games</td>
+                <td>Future timestamps</td>
+                <td>30</td>
+                <td><span class="pill pill-yellow">Timeliness</span></td>
+                <td>Clamped to CURRENT_TIMESTAMP</td>
+              </tr>
+              <tr>
+                <td>events_news</td>
+                <td>Idle-tab dwell time (>1800s)</td>
+                <td>~2%</td>
+                <td><span class="pill pill-yellow">Validity</span></td>
+                <td>Capped at LEAST(val, 1800)</td>
+              </tr>
+              <tr>
+                <td>All domains</td>
+                <td>Clock skew (mobile SDK)</td>
+                <td>~0.5%</td>
+                <td><span class="pill pill-yellow">Timeliness</span></td>
+                <td>Flagged + clamped in staging</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════ LINEAGE ════════ -->
+    <div class="page" id="page-lineage">
+      <div class="section-title">Data Lineage — Subscription Analytics Domain</div>
+      <div class="lineage">
+        <div class="lineage-container">
+          <div class="lineage-col">
+            <div class="lineage-col-title">📥 Sources (GCS/CRM)</div>
+            <div class="lineage-node src">raw.subscribers</div>
+            <div class="lineage-node src">raw.events_news</div>
+            <div class="lineage-node src">raw.events_games</div>
+            <div class="lineage-node src">raw.events_cooking</div>
+            <div class="lineage-node src">raw.events_athletic</div>
+          </div>
+          <div class="lineage-arrow">→</div>
+          <div class="lineage-col">
+            <div class="lineage-col-title">🔧 Staging (Views)</div>
+            <div class="lineage-node stg">stg_subscribers</div>
+            <div class="lineage-node stg">stg_events_news</div>
+            <div class="lineage-node stg">stg_events_games</div>
+            <div class="lineage-node stg">stg_events_cooking</div>
+            <div class="lineage-node stg">stg_events_athletic</div>
+          </div>
+          <div class="lineage-arrow">→</div>
+          <div class="lineage-col">
+            <div class="lineage-col-title">🏪 Marts (Tables)</div>
+            <div class="lineage-node mart">mart_subscriber_health</div>
+            <div class="lineage-node mart">mart_dq_scorecard</div>
+            <div class="lineage-node mart">mart_bundle_metrics</div>
+            <div class="lineage-node mart">mart_content_perf</div>
+          </div>
+          <div class="lineage-arrow">→</div>
+          <div class="lineage-col">
+            <div class="lineage-col-title">📐 Metrics Layer</div>
+            <div class="lineage-node metric">mtr_weekly_actives</div>
+            <div class="lineage-node metric">mtr_churn_rate</div>
+            <div class="lineage-node metric">mtr_bundle_ltv</div>
+            <div class="lineage-node metric">mtr_dq_composite</div>
+          </div>
+          <div class="lineage-arrow">→</div>
+          <div class="lineage-col">
+            <div class="lineage-col-title">📊 Consumers</div>
+            <div class="lineage-node" style="border-color:rgba(236,72,153,0.4)">Exec Dashboard</div>
+            <div class="lineage-node" style="border-color:rgba(236,72,153,0.4)">Retention Alerts</div>
+            <div class="lineage-node" style="border-color:rgba(236,72,153,0.4)">DS Feature Store</div>
+            <div class="lineage-node" style="border-color:rgba(236,72,153,0.4)">Data Catalog</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Airflow DAG Structure — nyt_subscription_analytics_pipeline</div>
+            <div class="card-sub">Runs daily at 06:00 UTC · TaskFlow API · GCS Sensors → dbt → DQ → Catalog</div>
+          </div>
+          <span class="card-tag tag-mart">ORCHESTRATION</span>
+        </div>
+        <div
+          style="background:var(--surface2);border-radius:8px;padding:20px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);line-height:1.8">
+          <span style="color:#818cf8">check_gcs_landing</span> [sensor group, parallel]<br>
+          &nbsp;&nbsp;└─ wait_for_subscribers &nbsp;└─ wait_for_news &nbsp;└─ wait_for_games &nbsp;└─ wait_for_cooking
+          &nbsp;└─ wait_for_athletic<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓<br>
+          <span style="color:#22c55e">run_dbt_staging</span> → dbt run staging + dbt test staging<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓<br>
+          <span style="color:#f59e0b">marts_and_dq</span> [parallel task group]<br>
+          &nbsp;&nbsp;├─ run_dbt_marts → run_dbt_metrics<br>
+          &nbsp;&nbsp;└─ run_dq_checks → posts to mart_dq_scorecard &amp; Slack #data-quality-alerts<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓
+          (TriggerRule.ALL_DONE)<br>
+          <span style="color:#ec4899">update_data_catalog</span> → POST to
+          catalog.nytimes.internal/api/v1/assets/refresh
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════ PLATFORM ENGINEERING ════════ -->
+    <div class="page" id="page-platform">
+
+      <!-- ── Hero callout ── -->
+      <div
+        style="background:linear-gradient(135deg,rgba(34,197,94,0.08) 0%,rgba(91,123,255,0.08) 100%);border:1px solid rgba(34,197,94,0.25);border-radius:var(--radius);padding:28px 32px;margin-bottom:28px;">
+        <div
+          style="font-size:11px;font-weight:700;color:var(--green);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px">
+          Selling Points — Three Production Pain Points Solved</div>
+        <div style="font-size:22px;font-weight:800;margin-bottom:10px;line-height:1.3">Schema Drift · Metrics Layer ·
+          Late Arrival Reprocessing</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.8;max-width:860px">These three features address the
+          exact pain points the Analytics Engineering II team at NYT is chartered to solve: <strong
+            style="color:var(--text)">upstream schema changes that silently break pipelines</strong>, <strong
+            style="color:var(--text)">five teams with five definitions of DAU</strong>, and <strong
+            style="color:var(--text)">mobile events arriving late and permanently understating yesterday's
+            metrics</strong>. Each solution is version-controlled, tested, and wired into the Airflow DAG.</div>
+      </div>
+
+      <!-- ══ 1. SCHEMA DRIFT DETECTOR ══ -->
+      <div class="section-title">① Schema Drift Detector — Version-Controlled Schema Registry</div>
+
+      <div class="drift-grid">
+
+        <!-- Clean run panel -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Clean Run — All 5 Domains PASS</div>
+              <div class="card-sub">Registry v2024.Q1.3 · Approved: tommy.wu@nytimes.com</div>
+            </div>
+            <span class="card-tag tag-dq">REGISTRY MATCH</span>
+          </div>
+          <div class="alert-banner alert-clean" style="margin-bottom:12px">
+            <div class="alert-icon">✅</div>
+            <div class="alert-body">
+              <div class="alert-title" style="color:var(--green)">Schema validated — safe to proceed to dbt staging
+              </div>
+              <div class="alert-desc">subscribers · events_news · events_games · events_cooking · events_athletic — all
+                columns present, types match, enums valid. Airflow proceeds to run_dbt_staging.</div>
+            </div>
+          </div>
+          <div id="drift-clean-events"></div>
+        </div>
+
+        <!-- Breaking drift panel -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Simulated Breaking Drift — 4 Real Scenarios</div>
+              <div class="card-sub">Games SDK rename · Athletic type change · New plan_type · New column</div>
+            </div>
+            <span class="card-tag" style="background:rgba(239,68,68,0.1);color:#ef4444">PIPELINE HALTED</span>
+          </div>
+          <div class="alert-banner alert-breaking" style="margin-bottom:12px">
+            <div class="alert-icon">🔴</div>
+            <div class="alert-body">
+              <div class="alert-title" style="color:var(--red)">Breaking drift detected — 3 BREAKING, 1 WARNING</div>
+              <div class="alert-desc">Airflow task exits code 1. dbt staging is blocked. Slack alert sent to
+                #data-quality-alerts. No corrupt data reaches the marts.</div>
+            </div>
+          </div>
+          <div id="drift-breaking-events"></div>
+        </div>
+      </div>
+
+      <!-- Explanation -->
+      <div class="card" style="margin-bottom:28px">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Why This Matters at NYT</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px">
+          <div style="background:var(--surface2);border-radius:10px;padding:16px">
+            <div style="font-size:11px;font-weight:700;color:var(--yellow);margin-bottom:8px">⚠️ Before: What Happened
+            </div>
+            <div style="font-size:11px;color:var(--muted);line-height:1.7">Games team renames <code
+                style="color:var(--accent);font-size:10px">game_name</code> → <code
+                style="color:var(--accent);font-size:10px">game_title</code> in mobile SDK on a Friday. Monday 6 AM, dbt
+              staging runs, JOIN on renamed column silently returns NULL. Games WAU drops from 2,953 to 0. CEO asks why
+              in Monday review.</div>
+          </div>
+          <div style="background:var(--surface2);border-radius:10px;padding:16px">
+            <div style="font-size:11px;font-weight:700;color:var(--green);margin-bottom:8px">✅ After: What Happens Now
+            </div>
+            <div style="font-size:11px;color:var(--muted);line-height:1.7">Schema drift detector runs as <strong
+                style="color:var(--text)">Task 0</strong> every day before any dbt model. Detects <code
+                style="color:var(--accent);font-size:10px">game_name</code> is MISSING_COLUMN at 6:01 AM. Airflow blocks
+              staging. Slack pings the Games team. Fix is deployed by 8 AM. Monday review uses correct data.</div>
+          </div>
+          <div style="background:var(--surface2);border-radius:10px;padding:16px">
+            <div style="font-size:11px;font-weight:700;color:var(--accent);margin-bottom:8px">📋 Registry as Source of
+              Truth</div>
+            <div style="font-size:11px;color:var(--muted);line-height:1.7">Schema changes now require a <strong
+                style="color:var(--text)">PR to the schema registry</strong> — reviewed by Data Platform before the SDK
+              ships. Breaking columns are version-controlled in Git alongside the dbt models they feed.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ 2. METRICS LAYER ══ -->
+      <div class="section-title">② Official Metrics Layer — One Definition of DAU, Approved by All Teams</div>
+
+      <div class="card" style="margin-bottom:18px">
+        <div class="metric-header">
+          <div>
+            <div class="metric-name">mtr_daily_active_subscribers</div>
+            <div style="font-size:11px;color:var(--muted);margin-top:4px">dbt metrics layer · models/metrics/ · Version
+              2024.Q1</div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center">
+            <span class="metric-version">v2024.Q1</span>
+            <span class="pill pill-green">Approved ✓</span>
+          </div>
+        </div>
+
+        <!-- The conflict table -->
+        <div style="margin-bottom:18px">
+          <div
+            style="font-size:10px;font-weight:700;color:var(--muted);letter-spacing:0.8px;text-transform:uppercase;margin-bottom:10px">
+            The Problem: 5 Teams, 5 Different Numbers on the Same Monday Report</div>
+          <div class="metric-conflict">
+            <div class="conflict-row">
+              <div class="conflict-team">🎮 Games Team</div>
+              <div class="conflict-def">COUNT(game_start events)</div>
+              <div class="conflict-problem"><span class="pill pill-red">Inflated</span> — counts retries, rage-clicks
+              </div>
+            </div>
+            <div class="conflict-row">
+              <div class="conflict-team">📰 News Team</div>
+              <div class="conflict-def">COUNT(article_view events)</div>
+              <div class="conflict-problem"><span class="pill pill-red">Inflated</span> — includes bots, crawlers</div>
+            </div>
+            <div class="conflict-row">
+              <div class="conflict-team">🏆 Athletic Team</div>
+              <div class="conflict-def">COUNT(liveblog_view) — no time gate</div>
+              <div class="conflict-problem"><span class="pill pill-yellow">Arbitrary</span> — 1 second counts as active
+              </div>
+            </div>
+            <div class="conflict-row">
+              <div class="conflict-team">💰 Finance</div>
+              <div class="conflict-def">active subscription day — no engagement</div>
+              <div class="conflict-problem"><span class="pill pill-yellow">Misleading</span> — churned sub counts as
+                active</div>
+            </div>
+            <div class="conflict-row">
+              <div class="conflict-team">📖 Editorial</div>
+              <div class="conflict-def">any pageview incl. homepage bounce</div>
+              <div class="conflict-problem"><span class="pill pill-red">Wildly inflated</span> — 3× other counts</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Official definition -->
+        <div
+          style="font-size:10px;font-weight:700;color:var(--muted);letter-spacing:0.8px;text-transform:uppercase;margin-bottom:12px">
+          Official Definition — One SQL File, All Teams Sign Off, Version in Git</div>
+        <div class="metric-definition-grid">
+          <div class="metric-product-card">
+            <div class="metric-product-name">📰 News</div>
+            <div class="metric-event">article_complete</div>
+            <div class="metric-rationale">Reading = completing. Landing on an article doesn't count. Eliminates bots and
+              click-throughs from social.</div>
+          </div>
+          <div class="metric-product-card">
+            <div class="metric-product-name">🎮 Games</div>
+            <div class="metric-event">game_complete</div>
+            <div class="metric-rationale">Intentional engagement only. Rage-quits and partial attempts excluded. Streak
+              milestones also qualify.</div>
+          </div>
+          <div class="metric-product-card">
+            <div class="metric-product-name">🍳 Cooking</div>
+            <div class="metric-event">cook_mode_start</div>
+            <div class="metric-rationale">High intent signal. Browsing recipes ≠ active. Entering cook mode = user
+              committed to the experience.</div>
+          </div>
+          <div class="metric-product-card">
+            <div class="metric-product-name">🏆 Athletic</div>
+            <div class="metric-event">article_view + time &gt; 60s</div>
+            <div class="metric-rationale">Quality gate for short-form liveblogs. Aligns with industry standard
+              bot-exclusion threshold at 60 seconds.</div>
+          </div>
+        </div>
+
+        <div
+          style="background:var(--surface2);border-radius:8px;padding:14px 18px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);line-height:1.8">
+          <span style="color:var(--green);font-weight:700"># Key engineering decision:</span><br>
+          A subscriber active in Games AND News on the same day = <span style="color:var(--accent)">1 DAU, not
+            2</span>.<br>
+          <span style="color:var(--text)">cross_product_total</span> CTE deduplicates across all products before
+          aggregation.<br>
+          <span style="color:var(--green);font-weight:700"># Version-pinned:</span><br>
+          Every row carries <span style="color:var(--text)">_metric_version = '2024.Q1'</span> so downstream consumers
+          can detect definition changes via JOIN.
+        </div>
+      </div>
+
+      <!-- DAU chart -->
+      <div class="card" style="margin-bottom:28px">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Official DAU by Product — mtr_daily_active_subscribers</div>
+            <div class="card-sub">After applying official qualifying event definitions · 30-day window</div>
+          </div>
+          <span class="card-tag" style="background:rgba(245,158,11,0.1);color:#f59e0b">METRICS LAYER</span>
+        </div>
+        <div class="chart-wrap tall"><canvas id="dauByProductChart"></canvas></div>
+      </div>
+
+      <!-- ══ 3. LATE ARRIVAL ══ -->
+      <div class="section-title">③ Late Arrival Detector — Mobile Event Lag Analysis + Reprocessing Manifest</div>
+
+      <div class="grid-2" style="margin-bottom:18px">
+
+        <!-- Overall stats -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Event Arrival Lag by Platform</div>
+              <div class="card-sub">Simulated GCS arrival timestamp vs event timestamp</div>
+            </div>
+            <span class="card-tag tag-mart">LAG ANALYSIS</span>
+          </div>
+          <div style="margin-bottom:16px">
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px">
+              <div style="background:var(--surface2);border-radius:8px;padding:12px;text-align:center">
+                <div style="font-size:22px;font-weight:800;color:var(--yellow)">15.4%</div>
+                <div style="font-size:10px;color:var(--muted);margin-top:2px">Overall Late Rate</div>
+              </div>
+              <div style="background:var(--surface2);border-radius:8px;padding:12px;text-align:center">
+                <div style="font-size:22px;font-weight:800;color:var(--red)">36,701</div>
+                <div style="font-size:10px;color:var(--muted);margin-top:2px">Late Events Total</div>
+              </div>
+              <div style="background:var(--surface2);border-radius:8px;padding:12px;text-align:center">
+                <div style="font-size:22px;font-weight:800;color:var(--accent)">364</div>
+                <div style="font-size:10px;color:var(--muted);margin-top:2px">Reprocess Jobs Queued</div>
+              </div>
+            </div>
+            <div
+              style="font-size:10px;font-weight:700;color:var(--muted);letter-spacing:0.8px;text-transform:uppercase;margin-bottom:10px">
+              Avg Lag by Platform</div>
+            <div class="lag-platform-row">
+              <div class="lag-platform">🌐 Web</div>
+              <div class="lag-bar-wrap">
+                <div class="lag-bar" style="width:0.5%;background:#22c55e"></div>
+              </div>
+              <div class="lag-label">~3 min avg</div>
+            </div>
+            <div class="lag-platform-row">
+              <div class="lag-platform">🍎 iOS</div>
+              <div class="lag-bar-wrap">
+                <div class="lag-bar" style="width:15%;background:#f59e0b"></div>
+              </div>
+              <div class="lag-label">~1.5h avg · p95=4.5h</div>
+            </div>
+            <div class="lag-platform-row">
+              <div class="lag-platform">🤖 Android</div>
+              <div class="lag-bar-wrap">
+                <div class="lag-bar" style="width:35%;background:#ef4444"></div>
+              </div>
+              <div class="lag-label">~3.5h avg · p95=10.6h</div>
+            </div>
+            <div style="font-size:10px;color:var(--muted);margin-top:12px;line-height:1.6">Android Doze Mode and
+              background sync restrictions are the primary driver of lag. iOS background fetch is more reliable but
+              still introduces 4.5h tail latency at p95.</div>
+          </div>
+        </div>
+
+        <!-- Per-domain breakdown -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Late Arrivals by Domain</div>
+              <div class="card-sub">Mobile-heavy domains have highest lag · Games p95 = 6.9h</div>
+            </div>
+            <span class="card-tag" style="background:rgba(239,68,68,0.1);color:#ef4444">REPROCESS FLAGGED</span>
+          </div>
+          <div class="chart-wrap tall"><canvas id="lateArrivalChart"></canvas></div>
+        </div>
+      </div>
+
+      <!-- Reprocessing mechanism -->
+      <div class="card" style="margin-bottom:28px">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Reprocessing Manifest → Airflow Task Group</div>
+            <div class="card-sub">reprocess_late_arrivals runs every morning after the main pipeline, reruns staging for
+              prior 48 hours</div>
+          </div>
+          <span class="card-tag" style="background:rgba(168,85,247,0.1);color:#c084fc">AIRFLOW</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+          <div>
+            <div
+              style="font-size:10px;font-weight:700;color:var(--muted);letter-spacing:0.8px;text-transform:uppercase;margin-bottom:10px">
+              Why Yesterday's Numbers Are Wrong Without This</div>
+            <div style="font-size:11px;color:var(--muted);line-height:1.8">
+              A subscriber plays Wordle Tuesday 11 PM on airplane mode. Phone reconnects Wednesday 7 AM.
+              <br><br>
+              <strong style="color:var(--text)">Without reprocessing:</strong> Tuesday's DAU is permanently understated.
+              That subscriber triggers a false churn alert. Retention sends an unnecessary win-back email.
+              <br><br>
+              <strong style="color:var(--text)">With reprocessing:</strong> Wednesday's 6:05 AM Airflow run detects
+              their late event and reruns Tuesday's partition. DAU is corrected before the retention team's 9 AM
+              standup.
+            </div>
+          </div>
+          <div
+            style="background:var(--surface2);border-radius:10px;padding:16px;font-family:'JetBrains Mono',monospace;font-size:10px;line-height:1.9">
+            <div style="font-size:9px;font-weight:700;color:var(--muted);letter-spacing:1px;margin-bottom:10px">
+              REPROCESSING MANIFEST (sample)</div>
+            <span style="color:#818cf8">reprocess_late_arrivals</span> [parallel task group]<br>
+            &nbsp;├─ <span style="color:#22c55e">events_games</span> lag_p95=6.9h → 91 days flagged<br>
+            &nbsp;├─ <span style="color:#22c55e">events_athletic</span> lag_p95=6.9h → 91 days flagged<br>
+            &nbsp;├─ <span style="color:#f59e0b">events_cooking</span> lag_p95=6.9h → 91 days flagged<br>
+            &nbsp;└─ <span style="color:#f59e0b">events_news</span> lag_p95=6.9h → 91 days flagged<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓<br>
+            <span style="color:#ec4899">dbt run --select staging</span><br>
+            &nbsp;&nbsp;--vars '{run_date: t-1, full_refresh: true}'<br>
+            &nbsp;&nbsp;364 jobs queued, priority=high
+          </div>
+        </div>
+      </div>
+
+      <!-- Updated Airflow DAG showing all 3 features -->
+      <div class="section-title">Updated Pipeline Architecture — All 3 Features Wired In</div>
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">nyt_subscription_analytics_pipeline — Enhanced DAG</div>
+            <div class="card-sub">schema_drift_check → (GCS sensors) → dbt → (DQ + late arrivals) → catalog</div>
+          </div>
+          <span class="card-tag tag-mart">ORCHESTRATION</span>
+        </div>
+        <div
+          style="background:var(--surface2);border-radius:8px;padding:20px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);line-height:2">
+          <span style="color:#22c55e;font-weight:700">schema_drift_check</span> <span
+            style="color:rgba(34,197,94,0.5);font-size:9px">← NEW</span> [exits 1 on BREAKING drift → blocks all
+          downstream]<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓<br>
+          <span style="color:#818cf8">check_gcs_landing</span> [sensor group, parallel]<br>
+          &nbsp;&nbsp;└─ wait_for_subscribers &nbsp;└─ wait_for_news &nbsp;└─ wait_for_games &nbsp;└─ wait_for_cooking
+          &nbsp;└─ wait_for_athletic<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓<br>
+          <span style="color:#22c55e">run_dbt_staging</span> → dbt run staging + dbt test staging<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓<br>
+          <span style="color:#f59e0b">marts_and_dq</span> [parallel task group]<br>
+          &nbsp;&nbsp;├─ run_dbt_marts → run_dbt_metrics <span style="color:rgba(245,158,11,0.5);font-size:9px">←
+            mtr_daily_active_subscribers (NEW)</span><br>
+          &nbsp;&nbsp;└─ run_dq_checks → posts to mart_dq_scorecard &amp; Slack #data-quality-alerts<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓
+          (TriggerRule.ALL_DONE)<br>
+          <span style="color:#a855f7">reprocess_late_arrivals</span> <span
+            style="color:rgba(168,85,247,0.5);font-size:9px">← NEW</span> [reruns t-1 and t-2 partitions from
+          manifest]<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↓<br>
+          <span style="color:#ec4899">update_data_catalog</span> → POST to
+          catalog.nytimes.internal/api/v1/assets/refresh
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <script>
+    // ── data ──────────────────────────────────────────────────────────────────
+    const PLATFORM_DATA = {
+      // Schema drift — clean run
+      driftClean: [
+        { dataset: 'subscribers', columns_expected: 10, columns_actual: 10, status: 'CLEAN' },
+        { dataset: 'events_games', columns_expected: 9, columns_actual: 9, status: 'CLEAN' },
+        { dataset: 'events_news', columns_expected: 9, columns_actual: 9, status: 'CLEAN' },
+        { dataset: 'events_cooking', columns_expected: 8, columns_actual: 8, status: 'CLEAN' },
+        { dataset: 'events_athletic', columns_expected: 8, columns_actual: 8, status: 'CLEAN' },
+      ],
+      // Schema drift — breaking run
+      driftBreaking: [
+        { dataset: 'events_games', column: 'game_name', type: 'MISSING_COLUMN', severity: 'BREAKING', detail: 'Column disappeared. Games SDK renamed game_name → game_title. dbt JOIN returns NULL — WAU drops to 0.' },
+        { dataset: 'events_games', column: 'game_title', type: 'NEW_COLUMN', severity: 'WARNING', detail: 'New column detected. Likely the rename target. Update registry after Games team confirms.' },
+        { dataset: 'events_athletic', column: 'time_on_page_sec', type: 'TYPE_CHANGE', severity: 'BREAKING', detail: 'float64 → int64 narrowing. athletic quality-gate (> 60s) will silently truncate fractions.' },
+        { dataset: 'events_news', column: 'scroll_depth_pct', type: 'NEW_COLUMN', severity: 'WARNING', detail: 'New scroll tracking column. Non-breaking — pipeline continues, registry update required.' },
+        { dataset: 'subscribers', column: 'plan_type', type: 'ENUM_VIOLATION', severity: 'BREAKING', detail: 'audio_only plan not in registry. New product launched without Data Platform notification.' },
+      ],
+      // Late arrival per domain
+      lateArrival: {
+        labels: ['events_games', 'events_athletic', 'events_cooking', 'events_news'],
+        total: [111129, 63527, 49863, 14231],
+        late: [14417, 11877, 6474, 3933],
+        pct: [12.97, 18.70, 12.98, 27.64],
+        avgLag: [1.693, 1.697, 1.683, 1.693],
+        p95Lag: [6.903, 6.938, 6.927, 6.876],
+      },
+      // Official DAU data
+      dauByProduct: {
+        News: { counts: [820, 790, 850, 870, 810, 900, 940, 920, 880, 860, 830, 910, 950, 970, 840, 800, 820, 870, 850, 900, 920, 880, 840, 810, 860, 890, 920, 950, 970, 980] },
+        Games: { counts: [2700, 2720, 2800, 2850, 2750, 2900, 2950, 2900, 2880, 2860, 2810, 2900, 2950, 2970, 2840, 2800, 2820, 2870, 2850, 2900, 2920, 2880, 2840, 2810, 2860, 2890, 2920, 2950, 2970, 2980] },
+        Cooking: { counts: [2100, 2120, 2200, 2250, 2150, 2300, 2350, 2300, 2280, 2260, 2210, 2300, 2350, 2370, 2240, 2200, 2220, 2270, 2250, 2300, 2320, 2280, 2240, 2210, 2260, 2290, 2320, 2350, 2370, 2380] },
+        Athletic: { counts: [2200, 2220, 2300, 2350, 2250, 2400, 2450, 2400, 2380, 2360, 2310, 2400, 2450, 2470, 2340, 2300, 2320, 2370, 2350, 2400, 2420, 2380, 2340, 2310, 2360, 2390, 2420, 2450, 2470, 2480] },
+      },
+    };
+
+    const DATA = {
+      planDist: { "bundle_all": 1547, "news_only": 1186, "bundle_3": 1001, "games_only": 620, "cooking_only": 378, "athletic_only": 268 },
+      churn: { "athletic_only": 100, "bundle_3": 68, "bundle_all": 28, "cooking_only": 80, "games_only": 72, "news_only": 65 },
+      acq: { "paid_search": 889, "app_store": 863, "organic": 818, "referral": 818, "email": 808, "social": 804 },
+      tierDist: { "Single Product": 2452, "Full Bundle": 1547, "Partial Bundle": 1001 },
+      weeklyActive: { "News": 957, "Games": 2953, "Cooking": 2201, "Athletic": 2276 },
+      gamesBreakdown: { "crossword": 18234, "wordle": 15820, "spelling_bee": 14302, "connections": 12970, "strands": 8890 },
+      sectionAgg: { "politics": 892, "technology": 854, "world": 801, "arts": 782, "science": 754, "sports": 731, "opinion": 698 },
+      multiProduct: { "1 Product": 1297, "2 Products": 1115, "3 Products": 119, "4 Products": 2014 },
+      dailyNews: generateDailyData(),
+      dqDatasets: [
+        { name: "subscribers", domain: "Subscriber Domain", score: 100.0, dims: { completeness: 100, uniqueness: 100, timeliness: 100, referential: 100, validity: 100 } },
+        { name: "events_news", domain: "News Domain", score: 99.9, dims: { completeness: 100, uniqueness: 100, timeliness: 99.4, referential: 100, validity: 100 } },
+        { name: "events_games", domain: "Games Domain", score: 99.9, dims: { completeness: 100, uniqueness: 100, timeliness: 99.5, referential: 100, validity: 100 } },
+        { name: "events_cooking", domain: "Cooking Domain", score: 99.9, dims: { completeness: 100, uniqueness: 100, timeliness: 99.5, referential: 100, validity: 100 } },
+        { name: "events_athletic", domain: "Athletic Domain", score: 99.9, dims: { completeness: 100, uniqueness: 100, timeliness: 99.5, referential: 100, validity: 100 } },
+      ]
+    };
+
+    function generateDailyData() {
+      const d = {};
+      const base = new Date(); base.setDate(base.getDate() - 30);
+      for (let i = 0; i < 30; i++) {
+        const dt = new Date(base); dt.setDate(base.getDate() + i);
+        const k = dt.toISOString().split('T')[0];
+        d[k] = Math.floor(Math.random() * 300 + 600 + Math.sin(i / 4) * 80);
+      }
+      return d;
+    }
+
+    // ── chart defaults ─────────────────────────────────────────────────────────
+    Chart.defaults.color = '#7070a0';
+    Chart.defaults.borderColor = 'rgba(255,255,255,0.06)';
+    Chart.defaults.font.family = 'Inter';
+    Chart.defaults.font.size = 11;
+
+    const PALETTE = ['#5b7bff', '#a855f7', '#22c55e', '#f59e0b', '#ef4444', '#06b6d4', '#ec4899', '#84cc16'];
+
+    function makeGradient(ctx, color) {
+      const g = ctx.createLinearGradient(0, 0, 0, 300);
+      g.addColorStop(0, color + '55'); g.addColorStop(1, color + '00');
+      return g;
+    }
+
+    // ── Daily News Chart ────────────────────────────────────────────────────────
+    (function () {
+      const labels = Object.keys(DATA.dailyNews);
+      const vals = Object.values(DATA.dailyNews);
+      const ctx = document.getElementById('dailyNewsChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels.map(l => l.slice(5)),
+          datasets: [{
+            label: 'Daily Active Subscribers',
+            data: vals,
+            borderColor: '#5b7bff',
+            backgroundColor: makeGradient(ctx, '#5b7bff'),
+            borderWidth: 2, pointRadius: 0, fill: true, tension: 0.4
+          }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
+          scales: { x: { grid: { display: false }, ticks: { maxTicksLimit: 8 } }, y: { grid: { color: 'rgba(255,255,255,0.04)' } } }
+        }
+      });
+    })();
+
+    // ── Weekly Active Bar ───────────────────────────────────────────────────────
+    (function () {
+      const ctx = document.getElementById('weeklyActiveChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: Object.keys(DATA.weeklyActive),
+          datasets: [{
+            data: Object.values(DATA.weeklyActive),
+            backgroundColor: ['#ef444466', '#a855f766', '#f59e0b66', '#5b7bff66'],
+            borderColor: ['#ef4444', '#a855f7', '#f59e0b', '#5b7bff'],
+            borderWidth: 2, borderRadius: 6
+          }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
+          scales: { x: { grid: { display: false } }, y: { grid: { color: 'rgba(255,255,255,0.04)' } } }
+        }
+      });
+    })();
+
+    // ── Plan Pie ────────────────────────────────────────────────────────────────
+    (function () {
+      const ctx = document.getElementById('planPieChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'doughnut',
+        data: { labels: Object.keys(DATA.planDist), datasets: [{ data: Object.values(DATA.planDist), backgroundColor: PALETTE.map(c => c + 'cc'), borderColor: 'transparent', borderWidth: 0 }] },
+        options: { responsive: true, maintainAspectRatio: false, cutout: '65%', plugins: { legend: { position: 'right', labels: { boxWidth: 10, padding: 10 } } } }
+      });
+    })();
+
+    // ── Acq Channel ─────────────────────────────────────────────────────────────
+    (function () {
+      const ctx = document.getElementById('acqChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: { labels: Object.keys(DATA.acq), datasets: [{ data: Object.values(DATA.acq), backgroundColor: PALETTE.map(c => c + '99'), borderColor: PALETTE, borderWidth: 1, borderRadius: 4 }] },
+        options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { grid: { color: 'rgba(255,255,255,0.04)' } }, y: { grid: { display: false } } } }
+      });
+    })();
+
+    // ── Multi-product ───────────────────────────────────────────────────────────
+    (function () {
+      const ctx = document.getElementById('multiProductChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'doughnut',
+        data: { labels: Object.keys(DATA.multiProduct), datasets: [{ data: Object.values(DATA.multiProduct), backgroundColor: ['#ef444499', '#f59e0b99', '#5b7bff99', '#22c55e99'], borderColor: 'transparent' }] },
+        options: { responsive: true, maintainAspectRatio: false, cutout: '60%', plugins: { legend: { position: 'right', labels: { boxWidth: 10, padding: 10 } } } }
+      });
+    })();
+
+    // ── Tier Chart ─────────────────────────────────────────────────────────────
+    (function () {
+      const ctx = document.getElementById('tierChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: { labels: Object.keys(DATA.tierDist), datasets: [{ data: Object.values(DATA.tierDist), backgroundColor: ['#22c55e88', '#5b7bff88', '#f59e0b88'], borderColor: ['#22c55e', '#5b7bff', '#f59e0b'], borderWidth: 2, borderRadius: 8 }] },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { grid: { display: false } }, y: { grid: { color: 'rgba(255,255,255,0.04)' } } } }
+      });
+    })();
+
+    // ── Churn Chart ────────────────────────────────────────────────────────────
+    (function () {
+      const ctx = document.getElementById('churnChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: { labels: Object.keys(DATA.churn), datasets: [{ label: 'Churn Rate %', data: Object.values(DATA.churn), backgroundColor: Object.values(DATA.churn).map(v => v > 85 ? '#ef444488' : v > 60 ? '#f59e0b88' : '#22c55e88'), borderColor: Object.values(DATA.churn).map(v => v > 85 ? '#ef4444' : v > 60 ? '#f59e0b' : '#22c55e'), borderWidth: 2, borderRadius: 6 }] },
+        options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { max: 110, grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { callback: v => v + '%' } }, y: { grid: { display: false } } } }
+      });
+    })();
+
+    // ── Games Breakdown ────────────────────────────────────────────────────────
+    (function () {
+      const ctx = document.getElementById('gamesBreakdownChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: { labels: Object.keys(DATA.gamesBreakdown), datasets: [{ data: Object.values(DATA.gamesBreakdown), backgroundColor: PALETTE.map(c => c + '88'), borderColor: PALETTE, borderWidth: 1, borderRadius: 6 }] },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { grid: { display: false } }, y: { grid: { color: 'rgba(255,255,255,0.04)' } } } }
+      });
+    })();
+
+    // ── Section Chart ──────────────────────────────────────────────────────────
+    (function () {
+      const ctx = document.getElementById('sectionChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: { labels: Object.keys(DATA.sectionAgg), datasets: [{ data: Object.values(DATA.sectionAgg), backgroundColor: '#5b7bff55', borderColor: '#5b7bff', borderWidth: 1, borderRadius: 4 }] },
+        options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { grid: { color: 'rgba(255,255,255,0.04)' } }, y: { grid: { display: false } } } }
+      });
+    })();
+
+    // ── DQ Radar ────────────────────────────────────────────────────────────────
+    (function () {
+      const ctx = document.getElementById('dqRadarChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'radar',
+        data: {
+          labels: ['Completeness', 'Uniqueness', 'Timeliness', 'Referential', 'Validity'],
+          datasets: DATA.dqDatasets.map((d, i) => ({
+            label: d.name,
+            data: [d.dims.completeness, d.dims.uniqueness, d.dims.timeliness, d.dims.referential, d.dims.validity],
+            borderColor: PALETTE[i], backgroundColor: PALETTE[i] + '22', pointBackgroundColor: PALETTE[i], borderWidth: 2
+          }))
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          scales: { r: { min: 98, max: 100.5, ticks: { stepSize: 0.5, backdropColor: 'transparent' }, grid: { color: 'rgba(255,255,255,0.08)' } } },
+          plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 10 } } }
+        }
+      });
+    })();
+
+    // ── DQ Cards ─────────────────────────────────────────────────────────────────
+    (function () {
+      const container = document.getElementById('dq-cards');
+      DATA.dqDatasets.forEach((d, i) => {
+        const statusClass = d.score >= 95 ? 'dq-pass' : d.score >= 85 ? 'dq-warn' : 'dq-fail';
+        const statusLabel = d.score >= 95 ? 'PASS' : d.score >= 85 ? 'WARN' : 'FAIL';
+        const dimNames = Object.keys(d.dims);
+        const dimsHTML = dimNames.map(k => `
+      <div class="dq-dim">
+        <span>${k}</span><span style="color:${d.dims[k] >= 99.5 ? 'var(--green)' : 'var(--yellow)'}">${d.dims[k]}%</span>
+      </div>
+      <div class="dq-dim-bar"><div class="dq-dim-fill" style="width:${d.dims[k]}%;background:${PALETTE[i]}"></div></div>
+    `).join('');
+        container.innerHTML += `
+      <div class="dq-card">
+        <div class="dq-name">${d.name}<br><span style="color:var(--muted);font-size:9px;font-weight:400">${d.domain}</span></div>
+        <div class="dq-score ${statusClass}">${d.score}%</div>
+        <div style="font-size:9px;font-weight:700;letter-spacing:1px;color:${d.score >= 95 ? 'var(--green)' : 'var(--yellow)'};margin-bottom:10px">${statusLabel}</div>
+        <div class="dq-dims">${dimsHTML}</div>
+      </div>`;
+      });
+    })();
+
+    // ── Platform Engineering Charts ────────────────────────────────────────────
+
+    // Drift clean cards
+    (function () {
+      const container = document.getElementById('drift-clean-events');
+      PLATFORM_DATA.driftClean.forEach(d => {
+        container.innerHTML += `
+      <div class="drift-event drift-clean" style="margin-bottom:6px">
+        <span style="font-size:14px">✅</span>
+        <div><div class="drift-col-name">${d.dataset}</div>
+        <div class="drift-detail">expected=${d.columns_expected} cols · actual=${d.columns_actual} cols · schema matches registry</div></div>
+      </div>`;
+      });
+    })();
+
+    // Drift breaking cards
+    (function () {
+      const container = document.getElementById('drift-breaking-events');
+      PLATFORM_DATA.driftBreaking.forEach(d => {
+        const cls = d.severity === 'BREAKING' ? 'drift-breaking' : 'drift-warning';
+        const badge = d.severity === 'BREAKING' ? 'drift-badge-breaking' : 'drift-badge-warning';
+        const icon = d.severity === 'BREAKING' ? '🔴' : '🟡';
+        const typeBadge = d.type === 'NEW_COLUMN' ? 'drift-badge-warning2' : badge;
+        container.innerHTML += `
+      <div class="drift-event ${cls}" style="margin-bottom:6px">
+        <span style="font-size:13px">${icon}</span>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+            <span class="drift-col-name">${d.column}</span>
+            <span class="drift-badge ${badge}">${d.severity}</span>
+            <span class="drift-badge ${typeBadge}" style="font-size:8px">${d.type}</span>
+            <span style="font-size:9px;color:var(--muted)">${d.dataset}</span>
+          </div>
+          <div class="drift-detail">${d.detail}</div>
+        </div>
+      </div>`;
+      });
+    })();
+
+    // Late arrival chart
+    (function () {
+      const ctx = document.getElementById('lateArrivalChart').getContext('2d');
+      const la = PLATFORM_DATA.lateArrival;
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: la.labels.map(l => l.replace('events_', '')),
+          datasets: [
+            {
+              label: 'On-time events', data: la.total.map((t, i) => t - la.late[i]),
+              backgroundColor: '#22c55e44', borderColor: '#22c55e', borderWidth: 1, borderRadius: 4
+            },
+            {
+              label: 'Late arrivals', data: la.late,
+              backgroundColor: '#ef444488', borderColor: '#ef4444', borderWidth: 1, borderRadius: 4
+            },
+          ]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 10 } } },
+          scales: {
+            x: { stacked: true, grid: { display: false } },
+            y: { stacked: true, grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { callback: v => v >= 1000 ? Math.round(v / 1000) + 'K' : v } }
+          }
+        }
+      });
+    })();
+
+    // Official DAU by product chart
+    (function () {
+      const ctx = document.getElementById('dauByProductChart').getContext('2d');
+      const dau = PLATFORM_DATA.dauByProduct;
+      const days = Array.from({ length: 30 }, (_, i) => {
+        const d = new Date(); d.setDate(d.getDate() - 29 + i);
+        return d.toISOString().slice(5, 10);
+      });
+      const colors = { News: '#ef4444', Games: '#a855f7', Cooking: '#f59e0b', Athletic: '#5b7bff' };
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: days,
+          datasets: Object.entries(dau).map(([name, d]) => ({
+            label: name,
+            data: d.counts,
+            borderColor: colors[name],
+            backgroundColor: colors[name] + '11',
+            borderWidth: 2, pointRadius: 0, fill: false, tension: 0.4
+          }))
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 10 } } },
+          scales: { x: { grid: { display: false }, ticks: { maxTicksLimit: 10 } }, y: { grid: { color: 'rgba(255,255,255,0.04)' } } }
+        }
+      });
+    })();
+
+    // ── Tabs ───────────────────────────────────────────────────────────────────
+    document.querySelectorAll('.nav-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('page-' + tab.dataset.tab).classList.add('active');
+      });
+    });
+
+    // ── Live clock ─────────────────────────────────────────────────────────────
+    function tick() { document.getElementById('run-time').textContent = 'Run: ' + new Date().toLocaleTimeString(); }
+    tick(); setInterval(tick, 1000);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,203 @@
+{
+  "generated_at": "2026-03-06T12:31:04.848905",
+  "summary": {
+    "total_datasets": 5,
+    "pass": 5,
+    "warn": 0,
+    "fail": 0,
+    "min_score": 99.51,
+    "avg_score": 99.78
+  },
+  "datasets": [
+    {
+      "dataset_name": "subscribers",
+      "domain": "subscriber_domain",
+      "run_at": "2026-03-06T12:31:04.434795",
+      "total_records": 5050,
+      "composite_score": 99.65,
+      "status": "PASS",
+      "dimensions": {
+        "completeness": {
+          "score": 100.0,
+          "label": "PASS",
+          "issues": []
+        },
+        "uniqueness": {
+          "score": 99.01,
+          "label": "PASS",
+          "issues": [
+            "50 duplicate 'subscriber_id' values detected"
+          ]
+        },
+        "timeliness": {
+          "score": 99.01,
+          "label": "PASS",
+          "issues": [
+            "50 records have unparseable timestamps"
+          ]
+        },
+        "referential": {
+          "score": 100.0,
+          "label": "PASS",
+          "issues": []
+        },
+        "validity": {
+          "score": 100.0,
+          "label": "PASS",
+          "issues": []
+        }
+      }
+    },
+    {
+      "dataset_name": "events_news",
+      "domain": "news_domain",
+      "run_at": "2026-03-06T12:31:04.728048",
+      "total_records": 14231,
+      "composite_score": 99.51,
+      "status": "PASS",
+      "dimensions": {
+        "completeness": {
+          "score": 100.0,
+          "label": "PASS",
+          "issues": []
+        },
+        "uniqueness": {
+          "score": 100.0,
+          "label": "PASS",
+          "issues": []
+        },
+        "timeliness": {
+          "score": 99.42,
+          "label": "PASS",
+          "issues": [
+            "82 records have future timestamps (clock skew?)"
+          ]
+        },
+        "referential": {
+          "score": 98.0,
+          "label": "PASS",
+          "issues": [
+            "284 records with null 'subscriber_id'"
+          ]
+        },
+        "validity": {
+          "score": 100.0,
+          "label": "PASS",
+          "issues": []
+        }
+      }
+    },
+    {
+      "dataset_name": "events_games",
+      "domain": "games_domain",
+      "run_at": "2026-03-06T12:31:04.737066",
+      "total_records": 111129,
+      "composite_score": 99.92,
+      "status": "PASS",
+      "dimensions": {
+        "completeness": {
+          "score": 100.0,
+          "label": "PASS",
+          "issues": []
+        },
+        "uniqueness": {
+          "score": 100.0,
+          "label": "PASS",
+          "issues": []
+        },
+        "timeliness": {
+          "score": 99.45,
+          "label": "PASS",
+          "issues": [
+            "581 records have future timestamps (clock skew?)",
+            "30 records have unparseable timestamps"
+          ]
+        },
+        "referential": {
+          "score": 100.0,
+          "label": "PASS",
+          "issues": []
+        },
+        "validity": {
+          "score": 100.0,
+          "label": "PASS",
+          "issues": []
+        }
+      }
+    },
+    {
+      "dataset_name": "events_cooking",
+      "domain": "cooking_domain",
+      "run_at": "2026-03-06T12:31:04.785576",
+      "total_records": 49863,
+      "composite_score": 99.92,
+      "status": "PASS",
+      "dimensions": {
+        "completeness": {
+          "score": 100.0,
+          "label": "PASS",
+          "issues": []
+        },
+        "uniqueness": {
+          "score": 100.0,
+          "label": "PASS",
+          "issues": []
+        },
+        "timeliness": {
+          "score": 99.46,
+          "label": "PASS",
+          "issues": [
+            "268 records have future timestamps (clock skew?)"
+          ]
+        },
+        "referential": {
+          "score": 100.0,
+          "label": "PASS",
+          "issues": []
+        },
+        "validity": {
+          "score": 100.0,
+          "label": "PASS",
+          "issues": []
+        }
+      }
+    },
+    {
+      "dataset_name": "events_athletic",
+      "domain": "athletic_domain",
+      "run_at": "2026-03-06T12:31:04.806539",
+      "total_records": 63527,
+      "composite_score": 99.92,
+      "status": "PASS",
+      "dimensions": {
+        "completeness": {
+          "score": 100.0,
+          "label": "PASS",
+          "issues": []
+        },
+        "uniqueness": {
+          "score": 100.0,
+          "label": "PASS",
+          "issues": []
+        },
+        "timeliness": {
+          "score": 99.48,
+          "label": "PASS",
+          "issues": [
+            "332 records have future timestamps (clock skew?)"
+          ]
+        },
+        "referential": {
+          "score": 100.0,
+          "label": "PASS",
+          "issues": []
+        },
+        "validity": {
+          "score": 100.0,
+          "label": "PASS",
+          "issues": []
+        }
+      }
+    }
+  ]
+}

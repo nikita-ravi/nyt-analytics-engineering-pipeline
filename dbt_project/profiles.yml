@@ -1,0 +1,24 @@
+nyt_analytics:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth                        # uses gcloud application-default login
+      project: nyt-analytics-engineering
+      dataset: dbt_dev                     # staging + mart models land here
+      threads: 4
+      timeout_seconds: 300
+      location: US
+      priority: interactive
+      retries: 1
+
+    prod:
+      type: bigquery
+      method: oauth
+      project: nyt-analytics-engineering
+      dataset: dbt_prod
+      threads: 8
+      timeout_seconds: 600
+      location: US
+      priority: batch
+      retries: 3

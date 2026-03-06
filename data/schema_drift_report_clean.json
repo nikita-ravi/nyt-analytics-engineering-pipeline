@@ -1,0 +1,40 @@
+{
+  "registry_version": "2024.Q1.3",
+  "run_at": "2026-03-06T14:36:09.872193",
+  "drift_injected": false,
+  "summary": {
+    "total_datasets": 5,
+    "clean": 5,
+    "info": 0,
+    "warning": 0,
+    "breaking": 0,
+    "total_events": 0
+  },
+  "datasets": [
+    {
+      "dataset": "subscribers",
+      "status": "CLEAN",
+      "events": []
+    },
+    {
+      "dataset": "events_games",
+      "status": "CLEAN",
+      "events": []
+    },
+    {
+      "dataset": "events_news",
+      "status": "CLEAN",
+      "events": []
+    },
+    {
+      "dataset": "events_cooking",
+      "status": "CLEAN",
+      "events": []
+    },
+    {
+      "dataset": "events_athletic",
+      "status": "CLEAN",
+      "events": []
+    }
+  ]
+}
