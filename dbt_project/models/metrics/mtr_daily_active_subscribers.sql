@@ -34,8 +34,23 @@
 --              | + time_on_page > 60s       | Quality gate to exclude bots/bounces
 --
 -- GRAIN: one row per (event_date, product, plan_type, platform, country)
--- MATERIALIZATION: Table, partitioned by event_date
+-- MATERIALIZATION: Incremental (Appends only new days to save BigQuery compute costs)
+-- OPTIMIZATION: Partitioned by event_date, Clustered by product & bundle_tier
 -- =============================================================================
+
+{{
+    config(
+        materialized='incremental',
+        unique_key=['event_date', 'product', 'bundle_tier', 'country'],
+        partition_by={
+            "field": "event_date",
+            "data_type": "date",
+            "granularity": "day"
+        },
+        cluster_by=['product', 'bundle_tier'],
+        incremental_strategy='merge'
+    )
+}}
 
 WITH
 
@@ -50,6 +65,10 @@ news_active AS (
     FROM {{ ref('stg_events_news') }}
     WHERE event_type = 'article_complete'
       AND event_date >= DATE_SUB(CURRENT_DATE(), INTERVAL {{ var('lookback_days') }} DAY)
+      {% if is_incremental() %}
+      -- Only process new partitions
+      AND event_date >= (SELECT MAX(event_date) FROM {{ this }})
+      {% endif %}
 ),
 
 -- ── Qualifying games events ─────────────────────────────────────────────────
@@ -63,6 +82,9 @@ games_active AS (
     FROM {{ source('raw', 'events_games') }}
     WHERE event_type = 'game_complete'
       AND DATE(event_timestamp) >= DATE_SUB(CURRENT_DATE(), INTERVAL {{ var('lookback_days') }} DAY)
+      {% if is_incremental() %}
+      AND DATE(event_timestamp) >= (SELECT MAX(event_date) FROM {{ this }})
+      {% endif %}
 ),
 
 -- ── Qualifying cooking events ───────────────────────────────────────────────
@@ -76,6 +98,9 @@ cooking_active AS (
     FROM {{ source('raw', 'events_cooking') }}
     WHERE event_type = 'cook_mode_start'
       AND DATE(event_timestamp) >= DATE_SUB(CURRENT_DATE(), INTERVAL {{ var('lookback_days') }} DAY)
+      {% if is_incremental() %}
+      AND DATE(event_timestamp) >= (SELECT MAX(event_date) FROM {{ this }})
+      {% endif %}
 ),
 
 -- ── Qualifying athletic events (with quality gate) ──────────────────────────
@@ -90,6 +115,9 @@ athletic_active AS (
     WHERE event_type = 'article_view'
       AND time_on_page_sec > 60          -- quality gate: exclude bots and bounces
       AND DATE(event_timestamp) >= DATE_SUB(CURRENT_DATE(), INTERVAL {{ var('lookback_days') }} DAY)
+      {% if is_incremental() %}
+      AND DATE(event_timestamp) >= (SELECT MAX(event_date) FROM {{ this }})
+      {% endif %}
 ),
 
 -- ── Union all qualifying events ─────────────────────────────────────────────
